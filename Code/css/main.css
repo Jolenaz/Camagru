@@ -13,22 +13,27 @@ main {
 }
 
 aside {
+    left: 0px;
+    display: inline-block;
     border: solid blue 1px;
     position: absolute;
     width: 100px;
-    right: 0px;
 }
 
 article {
+    position: absolute;
+    left: 110px;
+    display: inline-block;
+    width: calc(100% - 220px);
     border: solid orange 1px;
-    margin: 0px 105px 0px 105px;
 }
 
 nav {
+    right: 0px;
+    display: inline-block;
     position: absolute;
     border: solid green 1px;
     width: 100px;
-    left: 0px;
 }
 
 footer {

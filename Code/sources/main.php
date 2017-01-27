@@ -12,10 +12,23 @@
 <body>
 
     <header>
-        header
+        <?php
+        if ($_SESSION['log'] == false)
+        {
+            echo '
+            <form action="connection.php">
+                <input type="submit" value="Identifiez-vous !" />
+            </form>
+            ';
+        }
+        else
+        {
+            
+        }
+        
+        ?>
     </header>
     <main>
-        main
         <aside>
             aside
         </aside>
