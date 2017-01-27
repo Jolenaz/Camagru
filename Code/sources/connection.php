@@ -19,6 +19,9 @@
 			<form action="create_account.php">
 				<input type="submit" value="Créer un compte" />
 			</form>
+			<form action="lostMail.php">
+				<input type="submit" value="Mots de passe oublié" />
+			</form>
 			<div>
 				<form action="../index.php" method ="post"><input type="submit" value="Retour Accueil"></form>
 			</div>

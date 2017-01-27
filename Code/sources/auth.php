@@ -1,62 +1,39 @@
 <?php
-// $con = mysqli_connect($servername, $username, $password);
-// mysqli_select_db($con, $eshop);
-// $login = filter_input(INPUT_POST, login, FILTER_SANITIZE_STRING);
-// if ($login)
-// {
-// 	$sql = "SELECT password FROM members WHERE login =?";
-// 	$stmt = mysqli_prepare($con, $sql);
-// 	if ($stmt)
-// 	{
-// 		mysqli_stmt_bind_param($stmt, 's', $login);
-// 		mysqli_stmt_bind_result($stmt, $passwd);
-// 		mysqli_stmt_execute($stmt);
-// 		mysqli_store_result($con);
-// 		if (mysqli_stmt_fetch($stmt) == 1)
-// 		{
-// 			$cl_passwd = filter_input(INPUT_POST, passwd, FILTER_SANITIZE_STRING);
-// 			if ($passwd === hash('whirlpool', $cl_passwd))
-// 			{
-// 				$_SESSION['login'] = $login;
-// 				mysqli_stmt_close($stmt);
-// 				$sql = "SELECT panier FROM members WHERE login =?";
-// 				$stmt = mysqli_prepare($con, $sql);
-// 				if ($stmt)
-// 				{
-// 					mysqli_stmt_bind_param($stmt, 's', $login);
-// 					mysqli_stmt_bind_result($stmt,$panier);
-// 					mysqli_stmt_execute($stmt);
-// 					mysqli_store_result($con);
-// 					if (mysqli_stmt_fetch($stmt) == 1)
-// 					{
-// 						$tab = unserialize($panier);
-// 						mysqli_stmt_close($stmt);
-// 						if ($_SESSION['panier'] == null)
-// 							$_SESSION['panier'] = $tab;
-// 						else if ($tab != NULL)
-// 						{
-// 							$_SESSION['panier'] = ft_merge($_SESSION['panier'], $tab);
-// 						}
-// 						header('Location: ../index.php');
-// 					}
-// 				}
-// 			}
-// 			else
-// 			{
-// 				$str = "Erreur : Login/Mot de passe non valide !";
-// 				echo "$str\n\n";
-// 				mysqli_stmt_close($stmt);
-// 				include("connection.php");
-// 			}
-// 		}
-// 		else {
-// 			echo ("Erreur compte inconnue");
-// 			include("connection.php");
-// 			mysqli_stmt_close($stmt);
-// 		}
-// 	}
-// 	else {
-// 		mysqli_stmt_close($stmt);
-// 	}
-// }
+session_start();
+try {
+    $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
+} catch (PDOException $e) {
+    echo 'Connexion échouée : ' . $e->getMessage();
+}
+
+$login = filter_input(INPUT_POST, login, FILTER_SANITIZE_STRING);
+$pass = filter_input(INPUT_POST, passwd, FILTER_SANITIZE_STRING);
+
+$pass = hash("whirlpool", $pass);
+
+$sth = $dbh->prepare("SELECT * FROM `Users` WHERE `userName` = ? AND `password` = ?;");
+
+$sth->bindParam(1, $login, PDO::PARAM_STR);
+$sth->bindParam(2, $pass, PDO::PARAM_STR);
+$sth->execute();
+$result = $sth->fetch(PDO::FETCH_ASSOC);
+
+if ($result == null)
+{
+    print '
+        La combinaision Identifiant / Mot de passe est incorrect
+        <div>
+            <form action="connection.php" method ="post"><input type="submit" value="Essayer encore "></form>
+        </div>
+        <form action="lostMail.php">
+				<input type="submit" value="Mots de passe oublié" />
+		</form>
+        ';
+        die();
+}
+
+$_SESSION['log'] = true;
+
+header('Location: main.php');
+
 ?>

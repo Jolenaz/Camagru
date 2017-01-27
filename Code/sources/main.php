@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -10,7 +13,6 @@
 </head>
 
 <body>
-
     <header>
         <?php
         if ($_SESSION['log'] == false)

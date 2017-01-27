@@ -10,6 +10,8 @@
 			Identifiant: <input  type="text" name="login" maxlength="30" required/>
 			<br />
 			Mot de passe: <input type="password" name="passwd" required/>
+			<br />
+			Courriel: <input type="email" name="mail" required/>
 			<input type ="submit" value="OK" name="submit" />
             </form>
         <div>
