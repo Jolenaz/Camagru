@@ -6,10 +6,12 @@
 </head>
 	<body>
 		<h1 style="texte-align:center;">Inscrivez-vous:</h1>
-		<form method="POST" action="create.php">
+		<form method="POST" action="../scripts/create.php">
 			Identifiant: <input  type="text" name="login" maxlength="30" required/>
 			<br />
 			Mot de passe: <input type="password" name="passwd" required/>
+			<br />
+			Cofirmation du mot de passe: <input type="password" name="passwd2" required/>
 			<br />
 			Courriel: <input type="email" name="mail" required/>
 			<input type ="submit" value="OK" name="submit" />

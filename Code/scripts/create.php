@@ -6,6 +6,20 @@ try {
     echo 'Connexion échouée : ' . $e->getMessage();
 }
 
+$pass = filter_input(INPUT_POST, passwd, FILTER_SANITIZE_STRING);
+$pass2 = filter_input(INPUT_POST, passwd2, FILTER_SANITIZE_STRING);
+
+if ($pass != $pass2)
+{
+      print '
+        le Mot de passe et la confirmation de correspondent pas
+        <div>
+            <form action="../pages/create_account.php" method ="post"><input type="submit" value="Essayer encore "></form>
+        </div>
+        ';
+        die();  
+}
+
 $login = filter_input(INPUT_POST, login, FILTER_SANITIZE_STRING);
 
 $sth = $dbh->prepare("SELECT * FROM `Users` WHERE `userName` = ?");
@@ -19,14 +33,14 @@ if ($result != null)
     print '
         User name allrady exist!
         <div>
-            <form action="connection.php" method ="post"><input type="submit" value="Annuler"></form>
+            <form action="../pages/connection.php" method ="post"><input type="submit" value="Annuler"></form>
         </div>
         ';
         die();
 }
 
 
-$pass = filter_input(INPUT_POST, passwd, FILTER_SANITIZE_STRING);
+
 $mail = filter_input(INPUT_POST, mail, FILTER_SANITIZE_STRING);
 
 $pass = hash("whirlpool", $pass);
@@ -42,6 +56,6 @@ $result = $sth->fetch(PDO::FETCH_ASSOC);
 
 $_SESSION['log'] = true;
 
-header('Location: main.php');
+header('Location: ../pages/main.php');
 
 ?>

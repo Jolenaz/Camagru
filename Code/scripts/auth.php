@@ -23,7 +23,7 @@ if ($result == null)
     print '
         La combinaision Identifiant / Mot de passe est incorrect
         <div>
-            <form action="connection.php" method ="post"><input type="submit" value="Essayer encore "></form>
+            <form action="../pages/connection.php" method ="post"><input type="submit" value="Essayer encore "></form>
         </div>
         <form action="lostMail.php">
 				<input type="submit" value="Mots de passe oublié" />
@@ -34,6 +34,6 @@ if ($result == null)
 
 $_SESSION['log'] = true;
 
-header('Location: main.php');
+header('Location: ../pages/main.php');
 
 ?>
