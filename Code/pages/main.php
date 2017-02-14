@@ -25,7 +25,16 @@
         }
         else
         {
-            
+            echo '
+            <form action="../scripts/deconnection.php">
+                <input type="submit" value="Deconnection !" />
+            </form>
+            '; 
+			echo '
+            <form action="my_account.php">
+                <input type="submit" value="Mon Compte" />
+            </form>
+            '; 
         }
         
         ?>

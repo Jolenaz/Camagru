@@ -25,7 +25,7 @@ if ($result == null)
         <div>
             <form action="../pages/connection.php" method ="post"><input type="submit" value="Essayer encore "></form>
         </div>
-        <form action="lostMail.php">
+        <form action="../pages/lostMail.php">
 				<input type="submit" value="Mots de passe oublié" />
 		</form>
         ';
