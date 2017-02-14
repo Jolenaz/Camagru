@@ -6,7 +6,7 @@ try {
     echo 'Connexion échouée : ' . $e->getMessage();
 }
 
-$login = filter_input(INPUT_POST, login, FILTER_SANITIZE_STRING);
+$login = $_SESSION['user'];
 $pass = filter_input(INPUT_POST, passwd, FILTER_SANITIZE_STRING);
 
 $pass = hash("whirlpool", $pass);
@@ -21,7 +21,7 @@ $result = $sth->fetch(PDO::FETCH_ASSOC);
 if ($result == null)
 {
     print '
-        La combinaision Identifiant / Mot de passe est incorrect
+        Mot de passe est incorrect
         <div>
             <form action="../pages/connection.php" method ="post"><input type="submit" value="Essayer encore "></form>
         </div>
@@ -31,10 +31,19 @@ if ($result == null)
         ';
         die();
 }
+else
+{
 
-$_SESSION['log'] = true;
-$_SESSION['user'] = $login;
+	$mail = filter_input(INPUT_POST, mail, FILTER_SANITIZE_STRING);
+	$sth = $dbh->prepare("UPDATE `Users` SET `mail`=? WHERE `id`=?;");
 
-header('Location: ../pages/main.php');
+	$sth->bindParam(1, $mail, PDO::PARAM_STR);
+	$sth->bindParam(2, $login, PDO::PARAM_STR);
+	$sth->execute();
+	$result = $sth->fetch(PDO::FETCH_ASSOC);
+}
+
+
+header('Location: ../pages/my_account.php');
 
 ?>
