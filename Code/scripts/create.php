@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../srcs/check_pass.php");
 try {
     $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
 } catch (PDOException $e) {
@@ -18,6 +19,17 @@ if ($pass != $pass2)
         </div>
         ';
         die();  
+}
+if (!check_pass($pass))
+{
+      print '
+        le mot de passe doit contenir au moins un chiffre et une lettre
+		le mot de passe doit avoir au moins 8 caracteres
+        <div>
+            <form action="../pages/create_account.php" method ="post"><input type="submit" value="Essayer encore "></form>
+        </div>
+        ';
+        die();
 }
 
 $login = filter_input(INPUT_POST, login, FILTER_SANITIZE_STRING);
@@ -53,6 +65,15 @@ $sth->bindParam(3, $pass, PDO::PARAM_STR);
 
 $sth->execute();
 $result = $sth->fetch(PDO::FETCH_ASSOC);
+
+mail(
+    $mail,
+    "Camagru inscription",
+    "
+		Felicitation vous etes inscrit sur Camagru.
+    "
+    
+);
 
 $_SESSION['log'] = true;
 
