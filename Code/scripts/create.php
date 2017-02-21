@@ -43,7 +43,7 @@ if ($result != null)
 
 $mail = filter_input(INPUT_POST, mail, FILTER_SANITIZE_STRING);
 
-$pass = hash("whirlpool", $pass);
+//$pass = hash("whirlpool", $pass);
 
 $sth = $dbh->prepare("INSERT INTO `Users` (`userName`, `mail`, `password`, `admin`) VALUES (?, ?, ?, '0');");
 
@@ -55,6 +55,9 @@ $sth->execute();
 $result = $sth->fetch(PDO::FETCH_ASSOC);
 
 $_SESSION['log'] = true;
+
+$sth = null;
+$dbh = null;
 
 header('Location: ../pages/main.php');
 

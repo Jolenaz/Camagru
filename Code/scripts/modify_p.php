@@ -9,7 +9,7 @@ try {
 $login = $_SESSION['user'];
 
 $old_passwd = filter_input(INPUT_POST, old_passwd, FILTER_SANITIZE_STRING);
-$old_passwd = hash("whirlpool", $old_passwd);
+//$old_passwd = hash("whirlpool", $old_passwd);
 
 $sth = $dbh->prepare("SELECT * FROM `Users` WHERE `userName` = ? AND `password` = ?;");
 
@@ -47,13 +47,16 @@ if ($pass != $pass2)
         die();  
 }
 
-$pass = hash("whirlpool", $pass);
-$sth = $dbh->prepare("UPDATE `Users` SET `password`=? WHERE `id`=?;");
+//$pass = hash("whirlpool", $pass);
+$sth = $dbh->prepare("UPDATE `Users` SET `password`=? WHERE `userName`=?;");
 
 $sth->bindParam(1, $pass, PDO::PARAM_STR);
 $sth->bindParam(2, $login, PDO::PARAM_STR);
 $sth->execute();
 $result = $sth->fetch(PDO::FETCH_ASSOC);
+
+$sth = null;
+$dbh = null;
 
 header('Location: ../pages/main.php');
 

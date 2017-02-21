@@ -13,6 +13,8 @@ $passWord = strtoupper(hash("crc32", time()));
 
 $pass = hash("whirlpool", $passWord);
 
+
+
 $sth = $dbh->prepare("SELECT userName FROM `Users` WHERE `mail` = ?;UPDATE `Users` SET `password`= ? WHERE `mail` = ?;");
 
 $sth->bindParam(1, $mail, PDO::PARAM_STR);
@@ -31,6 +33,9 @@ mail(
         Your login is: " . $result[userName]
     
 );
+
+$sth = null;
+$dbh = null;
 
 header('Location: ../pages/main.php');
 
