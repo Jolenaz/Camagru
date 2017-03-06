@@ -28,6 +28,13 @@ article {
     border: solid orange 1px;
 }
 
+#videoScreen {
+    display: block;
+    width: 600px;
+    height: 600px;
+    border: solid black 1px;
+}
+
 nav {
     right: 0px;
     display: inline-block;

@@ -47,14 +47,34 @@
                 article
             </article>
             <nav>
-                nav
+			    nav
+			    <?php
+				if ($_SESSION['log'] == true)
+				{
+					echo '
+					<form action="../pages/montage.php">
+						<input type="submit" value="Go Montage" />
+					</form>
+					'; 
+				}
+				else
+				{
+					echo '
+					<button onclick="ConnectionNeeded()">Go Montage</button>
+					'; 
+				}
+        		?>
             </nav>
         </main>
         <footer>
             footer
         </footer>
 
-
+		<script>
+		function ConnectionNeeded() {
+			alert("Connection requise pour cett section");
+		}
+		</script>
     </body>
 
     </html>
