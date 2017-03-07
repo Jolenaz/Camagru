@@ -23,7 +23,7 @@ if ($pass != $pass2)
 if (!check_pass($pass))
 {
       print '
-        le mot de passe doit contenir au moins un chiffre et une lettre
+        le mot de passe doit contenir au moins un chiffre et une lettre </br>
 		le mot de passe doit avoir au moins 8 caracteres
         <div>
             <form action="../pages/create_account.php" method ="post"><input type="submit" value="Essayer encore "></form>
@@ -55,7 +55,7 @@ if ($result != null)
 
 $mail = filter_input(INPUT_POST, mail, FILTER_SANITIZE_STRING);
 
-//$pass = hash("whirlpool", $pass);
+$pass = hash("whirlpool", $pass);
 
 $sth = $dbh->prepare("INSERT INTO `Users` (`userName`, `mail`, `password`, `admin`) VALUES (?, ?, ?, '0');");
 
@@ -76,6 +76,7 @@ mail(
 );
 
 $_SESSION['log'] = true;
+$_SESSION['user'] = $login;
 
 $sth = null;
 $dbh = null;

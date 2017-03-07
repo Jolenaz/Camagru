@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 try {
     $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
 } catch (PDOException $e) {
@@ -9,7 +10,7 @@ try {
 $login = $_SESSION['user'];
 $pass = filter_input(INPUT_POST, passwd, FILTER_SANITIZE_STRING);
 
-//$pass = hash("whirlpool", $pass);
+$pass = hash("whirlpool", $pass);
 
 $sth = $dbh->prepare("SELECT * FROM `Users` WHERE `userName` = ? AND `password` = ?;");
 
@@ -23,11 +24,8 @@ if ($result == null)
     print '
         Mot de passe est incorrect
         <div>
-            <form action="../pages/connection.php" method ="post"><input type="submit" value="Essayer encore "></form>
+            <form action="../pages/modify_email.php" method ="post"><input type="submit" value="Essayer encore "></form>
         </div>
-        <form action="../pages/lostMail.php">
-				<input type="submit" value="Mots de passe oublié" />
-		</form>
         ';
         die();
 }

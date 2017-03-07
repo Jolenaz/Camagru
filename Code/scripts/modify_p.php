@@ -1,5 +1,6 @@
 <?php
 session_start();
+include("../srcs/check_pass.php");
 try {
     $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
 } catch (PDOException $e) {
@@ -9,7 +10,7 @@ try {
 $login = $_SESSION['user'];
 
 $old_passwd = filter_input(INPUT_POST, old_passwd, FILTER_SANITIZE_STRING);
-//$old_passwd = hash("whirlpool", $old_passwd);
+$old_passwd = hash("whirlpool", $old_passwd);
 
 $sth = $dbh->prepare("SELECT * FROM `Users` WHERE `userName` = ? AND `password` = ?;");
 
@@ -21,13 +22,10 @@ $result = $sth->fetch(PDO::FETCH_ASSOC);
 if ($result == null)
 {
     print '
-        La combinaision Identifiant / Mot de passe est incorrect
+        Ancien mot de passe incorrect
         <div>
             <form action="../pages/modify_pass.php" method ="post"><input type="submit" value="Essayer encore "></form>
         </div>
-        <form action="../pages/lostMail.php">
-				<input type="submit" value="Mots de passe oublié" />
-		</form>
         ';
         die();
 }
@@ -35,6 +33,18 @@ if ($result == null)
 
 $pass = filter_input(INPUT_POST, passwd, FILTER_SANITIZE_STRING);
 $pass2 = filter_input(INPUT_POST, passwd2, FILTER_SANITIZE_STRING);
+
+if (!check_pass($pass))
+{
+    print '
+        le mot de passe doit contenir au moins un chiffre et une lettre </br>
+        le mot de passe doit avoir au moins 8 caracteres
+        <div>
+            <form action="../pages/modify_pass.php" method ="post"><input type="submit" value="Essayer encore "></form>
+        </div>
+        ';
+        die();
+}
 
 if ($pass != $pass2)
 {
@@ -47,7 +57,7 @@ if ($pass != $pass2)
         die();  
 }
 
-//$pass = hash("whirlpool", $pass);
+$pass = hash("whirlpool", $pass);
 $sth = $dbh->prepare("UPDATE `Users` SET `password`=? WHERE `userName`=?;");
 
 $sth->bindParam(1, $pass, PDO::PARAM_STR);

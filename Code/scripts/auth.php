@@ -9,7 +9,7 @@ try {
 $login = filter_input(INPUT_POST, login, FILTER_SANITIZE_STRING);
 $pass = filter_input(INPUT_POST, passwd, FILTER_SANITIZE_STRING);
 
-//$pass = hash("whirlpool", $pass);
+$pass = hash("whirlpool", $pass);
 
 $sth = $dbh->prepare("SELECT * FROM `Users` WHERE `userName` = ? AND `password` = ?;");
 
