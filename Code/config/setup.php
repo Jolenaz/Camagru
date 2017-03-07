@@ -20,9 +20,19 @@ try {
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Images (
     id int(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(40),
-    path VARCHAR(40),
+    path VARCHAR(255),
     PRIMARY KEY (id)
     )");
+
+$dbh2->exec("CREATE TABLE IF NOT EXISTS Sprites (
+    id int(11) NOT NULL AUTO_INCREMENT,
+    name VARCHAR(40),
+    width int(11),
+    height int(11),
+    PRIMARY KEY (id)
+    )");
+
+$dbh2->exec("INSERT INTO `Sprites`(`id`, `name`, `width`,`height`) VALUES (1,'Choixpeau',500,385)");
 
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Users (
     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,

@@ -1,11 +1,13 @@
 <?php
     session_start();
+    include_once '../class/class.php';
+    include_once '../srcs/pull_sprites.php';
+    $sprites = pull_sprites();
 ?>
     <!DOCTYPE html>
     <html>
 
     <head>
-
         <meta charset="utf-8">
         <title>Camagru</title>
         <link rel="stylesheet" href="../css/main.css">
