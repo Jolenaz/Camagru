@@ -2,6 +2,7 @@
     session_start();
     include_once '../class/class.php';
     include_once '../srcs/pull_sprites.php';
+    include_once '../srcs/calc_quos.php';
     $sprites = pull_sprites();
 ?>
     <!DOCTYPE html>
@@ -14,7 +15,7 @@
 
     </head>
 
-    <body onload="link_cam()">
+    <body >
         <header>
             <form action="../scripts/deconnection.php">
                 <input type="submit" value="Deconnection !" />
@@ -25,12 +26,26 @@
         </header>
         <main>
             <aside>
-                aside
+                <?php
+                    foreach ($sprites as $sprite)
+                    {
+                        $quos = calc_quos($sprite->getSize());
+                        echo"
+                            <img 
+                            id=sp" . $sprite->getID() . "' 
+                            src='../sprites/sp" . $sprite->getID() . ".png' 
+                            style='width:".$sprite->getWidth() * $quos."px;height:".$sprite->getHeight() * $quos."px;'
+                            draggable='true'
+                            ondragstart='drag(event)'
+                            >
+                        ";
+                    }   
+                ?>
             </aside>
-            <article>
+            <article ondrop="drop(event)" ondragover="allowDrop(event)">
 				article
                 Vous etes dans la partie montage.
-				<video id="videoScreen">		
+				<video id="videoScreen" >		
 				</video>
 				<button onclick="getVideo()">Start Cam</button>
             </article>
@@ -43,6 +58,7 @@
         </footer>
 
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
+        <script src="../scripts/dragNdrop.js" type="text/javascript"></script>
     </body>
 
     </html>

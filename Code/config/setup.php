@@ -32,7 +32,9 @@ $dbh2->exec("CREATE TABLE IF NOT EXISTS Sprites (
     PRIMARY KEY (id)
     )");
 
-$dbh2->exec("INSERT INTO `Sprites`(`id`, `name`, `width`,`height`) VALUES (1,'Choixpeau',500,385)");
+$dbh2->exec("INSERT INTO `Sprites`(`id`, `name`, `width`,`height`) VALUES (1,'Choixpeau',500,385) ON DUPLICATE KEY UPDATE `id` = 1");
+$dbh2->exec("INSERT INTO `Sprites`(`id`, `name`, `width`,`height`) VALUES (2,'Pipe',600,392) ON DUPLICATE KEY UPDATE `id` = 2");
+
 
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Users (
     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,

@@ -21,9 +21,9 @@ aside {
 }
 
 article {
-    position: absolute;
+    /*position: absolute;*/
     left: 110px;
-    display: inline-block;
+    /*display: inline-block;*/
     width: calc(100% - 220px);
     border: solid orange 1px;
 }

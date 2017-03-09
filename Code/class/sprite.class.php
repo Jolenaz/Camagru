@@ -7,33 +7,56 @@ class sprite
     private $_width;
     private $_height;
 
-    public function _get($att){
-        print('name : ' . $_name . 'id : ' . $_id .'width : ' . $_width .$_id .'height : ' . $_height . PHP_EOL);
-        return (1);
+    public function __construct(array $kwargs){
+        try{
+            if (!array_key_exists('id', $kwargs))
+                throw new InvalidArgumentException('A sprite needs a id');
+            else
+                $this->_id = $kwargs['id'];
+            if (!array_key_exists('name', $kwargs))
+                throw new InvalidArgumentException('A sprite needs a name');
+            else
+                $this->_name = $kwargs['name'];
+            if (!array_key_exists('width', $kwargs))
+                throw new InvalidArgumentException('A sprite needs a width');
+            else
+                $this->_width = $kwargs['width'];
+            if (!array_key_exists('height', $kwargs))
+                throw new InvalidArgumentException('A sprite needs a height');
+            else
+                $this->_height = $kwargs['height'];
+        }catch(Exception $exc){
+			print ($exc . PHP_EOL);
+		}
     }
 
-    public function _set($att, $value){
+    public function __get($att){
+        print('name : ' . $_name . 'id : ' . $_id .'width : ' . $_width .$_id .'height : ' . $_height . PHP_EOL);
+        return (10);
+    }
+
+    public function __set($att, $value){
         print('not implemented' . PHP_EOL);
     }
 
     public function getName(){
-        return $this->$_name;
+        return $this->_name;
     }
 
     public function getID(){
-        return $this->$_id;
+        return $this->_id;
     }
 
     public function getSize(){
-        return array ("width" => $this->$_width, "height" => $this->$_height);
+        return array ("width" => $this->_width, "height" => $this->_height);
     }
 
     public function getWidth(){
-        return $this->$_width;
+        return $this->_width;
     }
 
     public function getHeight(){
-        return $this->$_height;
+        return $this->_height;
     }
 
 }

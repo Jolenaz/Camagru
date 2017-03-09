@@ -1,6 +1,6 @@
 <?php
 session_start();
 $_SESSION['log'] = false;
-include("config/setup.php");
+include_once ("config/setup.php");
 header("Location: ./pages/main.php");
 ?>
