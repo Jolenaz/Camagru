@@ -37,6 +37,7 @@
                             style='width:".$sprite->getWidth() * $quos."px;height:".$sprite->getHeight() * $quos."px;'
                             draggable='true'
                             ondragstart='drag(event)'
+                            onclick='add_sprite()'
                             >
                         ";
                     }   
@@ -45,11 +46,10 @@
             <article >
 				article
                 Vous etes dans la partie montage.
-                <canvas id="board" ondrop="drop(event)" ondragover="allowDrop(event)">
-				<!--<video id="videoScreen" >		
-				</video>
-				<button onclick="getVideo()">Start Cam</button>-->
+                <canvas id="board">
+                    <video id="videoScreen"></video>
                 </canvas>
+				<button onclick="getVideo()">Start Cam</button>
             </article>
             <nav>
                 nav
