@@ -42,12 +42,14 @@
                     }   
                 ?>
             </aside>
-            <article ondrop="drop(event)" ondragover="allowDrop(event)">
+            <article >
 				article
                 Vous etes dans la partie montage.
-				<video id="videoScreen" >		
+                <canvas id="board" ondrop="drop(event)" ondragover="allowDrop(event)">
+				<!--<video id="videoScreen" >		
 				</video>
-				<button onclick="getVideo()">Start Cam</button>
+				<button onclick="getVideo()">Start Cam</button>-->
+                </canvas>
             </article>
             <nav>
                 nav
