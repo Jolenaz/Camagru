@@ -1,7 +1,7 @@
 <?php
     session_start();
     include_once '../class/class.php';
-    include_once '../srcs/pull_sprites.php';
+    include_once '../srcs/sprites_manager.php';
     include_once '../srcs/calc_quos.php';
     $sprites = pull_sprites();
 ?>
@@ -15,7 +15,7 @@
 
     </head>
 
-    <body >
+    <body onload="init_canvas()">
         <header>
             <form action="../scripts/deconnection.php">
                 <input type="submit" value="Deconnection !" />
@@ -35,9 +35,7 @@
                             id=sp" . $sprite->getID() . "' 
                             src='../sprites/sp" . $sprite->getID() . ".png' 
                             style='width:".$sprite->getWidth() * $quos."px;height:".$sprite->getHeight() * $quos."px;'
-                            draggable='true'
-                            ondragstart='drag(event)'
-                            onclick='add_sprite()'
+                            onclick='add_sprite(" . $sprite->getID() . ")'
                             >
                         ";
                     }   
@@ -46,10 +44,13 @@
             <article >
 				article
                 Vous etes dans la partie montage.
-                <canvas id="board">
-                    <video id="videoScreen"></video>
-                </canvas>
-				<button onclick="getVideo()">Start Cam</button>
+                <canvas id="canvas" ></canvas>
+                <!--<video id="videoScreen"></video>
+				<button onclick="getVideo()">Start Cam</button>-->
+                <div id="current_sprites">
+
+
+                </div>
             </article>
             <nav>
                 nav
@@ -60,7 +61,17 @@
         </footer>
 
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
-        <script src="../scripts/dragNdrop.js" type="text/javascript"></script>
+        <script src="../scripts/add_sprite.js" type="text/javascript"></script>
+        <script>
+        function init_canvas()
+        {
+            var can = document.getElementById('canvas');
+            var ctx= can.getContext("2d");
+
+           ctx.fillRect(10,10,150,20);
+
+        }
+        </script>
     </body>
 
     </html>

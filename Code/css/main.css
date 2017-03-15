@@ -50,7 +50,7 @@ footer {
     width: 100%;
 }
 
-#board {
+#canvas {
     border: solid blueviolet 1px;
     z-index: 0;
     width: 1000px;
