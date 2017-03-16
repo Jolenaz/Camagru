@@ -6,6 +6,9 @@ class sprite
     private $_name;
     private $_width;
     private $_height;
+    private $_posX = 0;
+    private $_posY = 0;
+    private $_ang = 0;
 
     public function __construct(array $kwargs){
         try{
@@ -57,6 +60,12 @@ class sprite
 
     public function getHeight(){
         return $this->_height;
+    }
+
+    public function change_size($quos)
+    {
+        $this->_width *= $quos;
+        $this->_height *= $quos;
     }
 
 }

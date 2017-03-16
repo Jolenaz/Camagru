@@ -1,0 +1,17 @@
+article {
+    display: flex;
+    flex-direction: column;
+    border: solid purple 1px;
+    flex: 1;
+}
+
+#current_sprites {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.remote {
+    border: solid blueviolet 1px;
+    display: flex;
+    flex-direction: column;
+}

@@ -11,11 +11,13 @@
     <head>
         <meta charset="utf-8">
         <title>Camagru</title>
-        <link rel="stylesheet" href="../css/main.css">
+        <?php
+        include('../css/css.php');
+        ?>
 
     </head>
 
-    <body onload="init_canvas()">
+    <body>
         <header>
             <form action="../scripts/deconnection.php">
                 <input type="submit" value="Deconnection !" />
@@ -35,21 +37,24 @@
                             id=sp" . $sprite->getID() . "' 
                             src='../sprites/sp" . $sprite->getID() . ".png' 
                             style='width:".$sprite->getWidth() * $quos."px;height:".$sprite->getHeight() * $quos."px;'
-                            onclick='add_sprite(" . $sprite->getID() . ")'
+                            onclick='add_sprite(" . $sprite->getID() . ", " . $quos . ")'
                             >
                         ";
+                        $sprite->change_size($quos);
                     }   
                 ?>
             </aside>
             <article >
-				article
-                Vous etes dans la partie montage.
-                <canvas id="canvas" ></canvas>
-                <!--<video id="videoScreen"></video>
-				<button onclick="getVideo()">Start Cam</button>-->
+                <div>
+                    article </br>
+                    Vous etes dans la partie montage.
+                </div>
+                <div>
+                    <canvas id="canvas" width="520" height="520" ></canvas>
+                    <!--<video id="videoScreen"></video>
+                    <button onclick="getVideo()">Start Cam</button>-->
+                </div>
                 <div id="current_sprites">
-
-
                 </div>
             </article>
             <nav>
@@ -63,14 +68,7 @@
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
         <script>
-        function init_canvas()
-        {
-            var can = document.getElementById('canvas');
-            var ctx= can.getContext("2d");
 
-           ctx.fillRect(10,10,150,20);
-
-        }
         </script>
     </body>
 
