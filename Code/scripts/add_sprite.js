@@ -36,8 +36,6 @@ class Sprite_icone {
 function refresh_sprite() {
     var ctx = document.getElementById("canvas").getContext("2d");
     ctx.clearRect(0, 0, 500, 500);
-    ctx.fillStyle = "rgb(123, 56, 145)";
-    ctx.fillRect(0, 0, 500, 500);
 
     var img_array = [];
 
@@ -73,30 +71,30 @@ function add_sprite(spr_obj, quos) {
 
     var tmp;
 
-    var sprite = new Sprite_icone(100, 100, quos, 0, sp)
+    var sprite = new Sprite_icone(150, 150, quos, 0, sp)
 
     //Creation de la premiere ligne
 
     var up = document.createElement("button");
-    up.onmousedown = function() { tmp = setInterval(function() { sprite.move(0, -5) }, 200) };
+    up.onmousedown = function() { tmp = setInterval(function() { sprite.move(0, -5) }, 150) };
     up.onclick = function() { sprite.move(0, -5) };
     up.onmouseup = function() { clearInterval(tmp) };
     up.appendChild(document.createTextNode("up"));
 
     var rollL = document.createElement("button");
-    rollL.onmousedown = function() { tmp = setInterval(function() { sprite.rotate(10) }, 200) };
-    rollL.onclick = function() { sprite.rotate(10) };
+    rollL.onmousedown = function() { tmp = setInterval(function() { sprite.rotate(-10) }, 150) };
+    rollL.onclick = function() { sprite.rotate(-10) };
     rollL.onmouseup = function() { clearInterval(tmp) };
     rollL.appendChild(document.createTextNode("roll left"));
 
     var rollR = document.createElement("button");
-    rollR.onmousedown = function() { tmp = setInterval(function() { sprite.rotate(-10) }, 200) };
-    rollR.onclick = function() { sprite.rotate(-10) };
+    rollR.onmousedown = function() { tmp = setInterval(function() { sprite.rotate(10) }, 150) };
+    rollR.onclick = function() { sprite.rotate(10) };
     rollR.onmouseup = function() { clearInterval(tmp) };
     rollR.appendChild(document.createTextNode("roll right"));
 
     var plus = document.createElement("button");
-    plus.onmousedown = function() { tmp = setInterval(function() { sprite.resize(0.01) }, 200) };
+    plus.onmousedown = function() { tmp = setInterval(function() { sprite.resize(0.01) }, 150) };
     plus.onclick = function() { sprite.resize(0.01) };
     plus.onmouseup = function() { clearInterval(tmp) };
     plus.appendChild(document.createTextNode("+"));
@@ -110,25 +108,25 @@ function add_sprite(spr_obj, quos) {
     //Creation de la deuxieme ligne
 
     var left = document.createElement("button");
-    left.onmousedown = function() { tmp = setInterval(function() { sprite.move(-5, 0) }, 200) };
+    left.onmousedown = function() { tmp = setInterval(function() { sprite.move(-5, 0) }, 150) };
     left.onclick = function() { sprite.move(-5, 0) };
     left.onmouseup = function() { clearInterval(tmp) };
     left.appendChild(document.createTextNode("left"));
 
     var down = document.createElement("button");
-    down.onmousedown = function() { tmp = setInterval(function() { sprite.move(0, 5) }, 200) };
+    down.onmousedown = function() { tmp = setInterval(function() { sprite.move(0, 5) }, 150) };
     down.onclick = function() { sprite.move(0, 5) };
     down.onmouseup = function() { clearInterval(tmp) };
     down.appendChild(document.createTextNode("down"));
 
     var right = document.createElement("button");
-    right.onmousedown = function() { tmp = setInterval(function() { sprite.move(5, 0) }, 200) };
+    right.onmousedown = function() { tmp = setInterval(function() { sprite.move(5, 0) }, 150) };
     right.onclick = function() { sprite.move(5, 0) };
     right.onmouseup = function() { clearInterval(tmp) };
     right.appendChild(document.createTextNode("right"));
 
     var minus = document.createElement("button");
-    minus.onmousedown = function() { tmp = setInterval(function() { sprite.resize(-0.01) }, 200) };
+    minus.onmousedown = function() { tmp = setInterval(function() { sprite.resize(-0.01) }, 150) };
     minus.onclick = function() { sprite.resize(-0.01) };
     minus.onmouseup = function() { clearInterval(tmp) };
     minus.appendChild(document.createTextNode("-"));

@@ -49,11 +49,11 @@
                     article </br>
                     Vous etes dans la partie montage.
                 </div>
-                <div>
+                <div id="zone_montage">
                     <canvas id="canvas" width="520" height="520" ></canvas>
-                    <!--<video id="videoScreen"></video>
-                    <button onclick="getVideo()">Start Cam</button>-->
+                    <video id="videoScreen"></video>     
                 </div>
+                <button onclick="getVideo()">Start Cam</button>
                 <div id="current_sprites">
                 </div>
             </article>
