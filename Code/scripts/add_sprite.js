@@ -1,12 +1,15 @@
 var sprite_array = [];
 
 class Sprite_icone {
-    constructor(x, y, quos, ang, id) {
+    constructor(x, y, quos, ang, sp) {
         this.x = x;
         this.y = y;
         this.quos = quos;
         this.ang = ang;
-        this.id = id;
+        this.id = sp.id;
+        this.name = sp.name;
+        this.width = sp.width;
+        this.height = sp.height;
     }
 
     move(x, y) {
@@ -24,20 +27,42 @@ class Sprite_icone {
         this.quos += quos;
         refresh_sprite();
     }
+
+    add_img(img) {
+        this.img = img;
+    }
 }
 
 function refresh_sprite() {
     var ctx = document.getElementById("canvas").getContext("2d");
     ctx.clearRect(0, 0, 500, 500);
+    ctx.fillStyle = "rgb(123, 56, 145)";
+    ctx.fillRect(0, 0, 500, 500);
+
+    var img_array = [];
+
     for (var i = 0; i < sprite_array.length; ++i) {
-        var img = new Image
-        console.log(sprite_array[i].id);
+        var img = new Image();
+        img.src = "../sprites/sp" + sprite_array[i].id + ".png";
+        sprite_array[i].add_img(img);
+
+        if (i == sprite_array.length - 1) {
+            img.onload = function(e) {
+                for (var j = 0; j < sprite_array.length; ++j) {
+                    ctx.drawImage(sprite_array[j].img, sprite_array[j].x, sprite_array[j].y, sprite_array[j].width * sprite_array[j].quos, sprite_array[j].height * sprite_array[j].quos);
+                }
+            };
+        }
     }
 }
 
-function add_sprite(id, quos) {
+function add_sprite(spr_obj, quos) {
 
-    var sprite = new Sprite_icone(0, 0, quos, 0, id)
+    var sp = JSON.parse(spr_obj);
+
+    console.log(sp);
+
+    var sprite = new Sprite_icone(0, 0, quos, 0, sp)
 
     //Creation de la premiere ligne
 

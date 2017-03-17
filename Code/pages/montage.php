@@ -37,7 +37,7 @@
                             id=sp" . $sprite->getID() . "' 
                             src='../sprites/sp" . $sprite->getID() . ".png' 
                             style='width:".$sprite->getWidth() * $quos."px;height:".$sprite->getHeight() * $quos."px;'
-                            onclick='add_sprite(" . $sprite->getID() . ", " . $quos . ")'
+                            onclick='add_sprite(\"" . $sprite->get() . "\", " . $quos . ")'
                             >
                         ";
                         $sprite->change_size($quos);

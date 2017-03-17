@@ -6,9 +6,6 @@ class sprite
     private $_name;
     private $_width;
     private $_height;
-    private $_posX = 0;
-    private $_posY = 0;
-    private $_ang = 0;
 
     public function __construct(array $kwargs){
         try{
@@ -33,9 +30,9 @@ class sprite
 		}
     }
 
-    public function __get($att){
-        print('name : ' . $_name . 'id : ' . $_id .'width : ' . $_width .$_id .'height : ' . $_height . PHP_EOL);
-        return (10);
+    public function get(){
+        $res = '{\"name\" : \"'.$this->_name.'\", \"id\" : '.$this->_id.', \"width\" : '.$this->_width.', \"height\" : '.$this->_height.'}';
+        return ($res);
     }
 
     public function __set($att, $value){
