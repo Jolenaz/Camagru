@@ -18,17 +18,22 @@ article {
 
 #canvas {
     position: absolute;
-    width: 520px;
-    height: 520px;
     z-index: 10;
 }
 
 #videoScreen {
-    display: block;
     position: absolute;
     z-index: 1;
 }
 
 #zone_montage {
-    height: 540px;
+    height: 500px;
+}
+
+#prev0 {
+    position: absolute;
+}
+
+#prev1 {
+    position: absolute;
 }

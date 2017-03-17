@@ -50,23 +50,34 @@
                     Vous etes dans la partie montage.
                 </div>
                 <div id="zone_montage">
-                    <canvas id="canvas" width="520" height="520" ></canvas>
+                    <canvas id="canvas" width="640" height="480" ></canvas>
                     <video id="videoScreen"></video>     
                 </div>
                 <button onclick="getVideo()">Start Cam</button>
                 <div id="current_sprites">
+                <button onclick="upload()">upload</button>
                 </div>
             </article>
             <nav>
                 nav
             </nav>
         </main>
-        <footer>
-            footer
+        <footer id="footer">
+        footer
+                <div id="prev_zone">
+                    <canvas id="prev0" width="640" height="480" ></canvas>
+                    <canvas id="prev1" width="640" height="480" ></canvas>
+                </div>
+                <form action="" method="post">
+                        <input type="hidden" id="input0" name="data0"></input>
+                        <input type="hidden" id="input1" name="data1"></input>
+                        <input type="submit" ></input>
+                </form>
         </footer>
 
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
+        <script src="../scripts/upload.js" type="text/javascript"></script>
         <script>
 
         </script>
