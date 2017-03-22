@@ -10,7 +10,7 @@
 <body>
     <h1 style="texte-align:center;">Connectez-vous :</h1>
     <section id="ConnectionBox">
-        <form method="POST" action="../scripts/auth.php">
+        <form method="POST" action="../server/auth.php">
             <span>
 				Identifiant:<input type="text" name="login" maxlength="30" required><br>
 				Mot de Passe:<input type="password" name="passwd" required>

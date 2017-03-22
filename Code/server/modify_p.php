@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../srcs/check_pass.php");
+include("../server/check_pass.php");
 try {
     $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
 } catch (PDOException $e) {

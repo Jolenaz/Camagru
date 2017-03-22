@@ -13,11 +13,28 @@ function upload() {
     var ctx1 = document.getElementById("prev1").getContext("2d");
     ctx1.drawImage(img1, 0, 0);
 
-    var input0 = document.getElementById("input0");
-    var input1 = document.getElementById("input1");
+    var but = document.createElement('button');
+    but.appendChild(document.createTextNode('Envoyer la photo'));
+    but.onclick = function() { send() };
 
-    input0.value = document.getElementById("prev0").toDataURL().replace(/^data:image\/(png|jpg);base64,/, "");
-    input1.value = document.getElementById("prev1").toDataURL().replace(/^data:image\/(png|jpg);base64,/, "");
 
     document.getElementById("prev_zone").style.height = '500px';
+    document.getElementById("footer").appendChild(but);
+}
+
+
+function send() {
+    var data = {
+        'im0': document.getElementById("prev0").toDataURL().replace(/^data:image\/(png|jpg);base64,/, ""),
+        'im1': document.getElementById("prev1").toDataURL().replace(/^data:image\/(png|jpg);base64,/, "")
+    };
+    var xhr = getXMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
+            read_response(xhr.responseText);
+        }
+    };
+    xhr.open("POST", "http://localhost:8080/Camagru/server/server.php", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhr.send("im0=" + data.im0 + "&im1=" + data.im1);
 }

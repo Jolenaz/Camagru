@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="../../css/create_account.css">
 </head>
 	<body>
-		<form method="POST" action="../scripts/modify_m.php">
+		<form method="POST" action="../server/modify_m.php">
 			Mot de passe: <input  type="password" name="passwd" required/>
 		<br />
 			Nouvel email: <input type="email" name="mail" required/>

@@ -28,7 +28,7 @@
         else
         {
             echo '
-            <form action="../scripts/deconnection.php">
+            <form action="../server/deconnection.php">
                 <input type="submit" value="Deconnection !" />
             </form>
             '; 
@@ -71,7 +71,6 @@
         <footer>
             footer
         </footer>
-
 		<script>
 		function ConnectionNeeded() {
 			alert("Connection requise pour cett section");

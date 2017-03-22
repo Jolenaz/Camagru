@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="../../css/create_account.css">
 </head>
 	<body>
-		<form method="POST" action="../scripts/modify_p.php">
+		<form method="POST" action="../server/modify_p.php">
 			Ancien mot de passe: <input  type="password" name="old_passwd" required/>
 		<br />
 			Nouveau mot de passe: <input type="password" name="passwd" required/>

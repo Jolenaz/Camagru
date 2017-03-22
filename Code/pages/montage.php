@@ -1,8 +1,8 @@
 <?php
     session_start();
     include_once '../class/class.php';
-    include_once '../srcs/sprites_manager.php';
-    include_once '../srcs/calc_quos.php';
+    include_once '../server/sprites_manager.php';
+    include_once '../server/calc_quos.php';
     $sprites = pull_sprites();
 ?>
     <!DOCTYPE html>
@@ -19,7 +19,7 @@
 
     <body>
         <header>
-            <form action="../scripts/deconnection.php">
+            <form action="../server/deconnection.php">
                 <input type="submit" value="Deconnection !" />
             </form>
             <form action="my_account.php">
@@ -68,11 +68,6 @@
                     <canvas id="prev0" width="640" height="480" ></canvas>
                     <canvas id="prev1" width="640" height="480" ></canvas>
                 </div>
-                <form action="" method="post">
-                        <input type="hidden" id="input0" name="data0"></input>
-                        <input type="hidden" id="input1" name="data1"></input>
-                        <input type="submit" ></input>
-                </form>
         </footer>
 
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
