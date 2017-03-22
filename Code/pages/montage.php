@@ -69,7 +69,7 @@
                     <canvas id="prev1" width="640" height="480" ></canvas>
                 </div>
         </footer>
-
+        <script src="../scripts/httpRequestManager.js" type="text/javascript"></script>
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
         <script src="../scripts/upload.js" type="text/javascript"></script>

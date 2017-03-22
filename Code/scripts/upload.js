@@ -24,17 +24,19 @@ function upload() {
 
 
 function send() {
+    var prv0 = document.getElementById("prev0");
+    var prv1 = document.getElementById("prev1");
+    var u0 = prv0.toDataURL();
+    var u1 = prv1.toDataURL();
+    var cl0 = encodeURIComponent(u0.replace(/^data:image\/(png|jpg);base64,/, ""));
+    var cl1 = encodeURIComponent(u1.replace(/^data:image\/(png|jpg);base64,/, ""));
     var data = {
-        'im0': document.getElementById("prev0").toDataURL().replace(/^data:image\/(png|jpg);base64,/, ""),
-        'im1': document.getElementById("prev1").toDataURL().replace(/^data:image\/(png|jpg);base64,/, "")
+        'im0': cl0,
+        'im1': cl1
     };
-    var xhr = getXMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-            read_response(xhr.responseText);
-        }
-    };
-    xhr.open("POST", "http://localhost:8080/Camagru/server/server.php", true);
-    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    xhr.send("im0=" + data.im0 + "&im1=" + data.im1);
+    request("http://localhost:8080/Camagru/server/save_image.php", data, "POST", read_resp);
+}
+
+function read_resp(data) {
+    console.log(data);
 }

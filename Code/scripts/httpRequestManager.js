@@ -19,11 +19,12 @@ function getXMLHttpRequest() {
 }
 
 function request(url, data, method, callback) {
-    var xhr = getXMLHttpRequest();
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url, true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     if (method == "POST") {
         var dataStr = "";
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         for (var d in data) {
             dataStr += d + "=" + data[d] + "&";
         }
@@ -39,7 +40,9 @@ function request(url, data, method, callback) {
             callback(xhr.responseText);
         }
     };
+    xhr.send(dataStr);
+}
 
-    xhr.open(method, url, true);
-    xhr.send(data);
+function logg() {
+    console.log("kakak");
 }

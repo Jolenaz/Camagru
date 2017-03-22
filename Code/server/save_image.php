@@ -6,7 +6,16 @@ $im0 = (isset($_POST["im0"])) ? $_POST["im0"] : NULL;
 if ($im0 == NULL || $im1 == NULL) {
 	echo "Le téléchargement des images a échoué!";
 } 
-$im0 = base64_decode($im0);
-$im1 = base64_decode($im1);
+
+$sprite = imagecreatefromstring(base64_decode($im1));
+$fond = imagecreatefromstring(base64_decode($im0));
+
+imagealphablending($sprite, true);
+imagesavealpha($sprite, true);
+
+imagecopy($fond,$sprite,0,0,0,0,imagesx($sprite),imagesy($sprite));
+
+
+imagepng($fond,"../galerie/test.png");
 
 ?>
