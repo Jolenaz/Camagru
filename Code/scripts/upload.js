@@ -1,4 +1,4 @@
-function upload() {
+function take_picture() {
     var can1 = document.getElementById("canvas");
     var vid = document.getElementById("videoScreen");
 
@@ -13,26 +13,39 @@ function upload() {
     var ctx1 = document.getElementById("prev1").getContext("2d");
     ctx1.drawImage(img1, 0, 0);
 
-    var but = document.createElement('button');
-    but.appendChild(document.createTextNode('Envoyer la photo'));
-    but.onclick = function() { send() };
+    if (!document.getElementById('send_photo')) {
+        var but = document.createElement('button');
+        but.id = 'send_photo';
+        but.appendChild(document.createTextNode('Sauvegarder la photo'));
+        but.onclick = function() { send() };
+        document.getElementById("footer").appendChild(but);
 
+        var name = document.createElement('input');
+        name.type = 'text';
+        name.placeholder = 'nom de la photo';
+
+        but.onclick = function() {
+            if (!name.value) {
+                alert('la photo a besoin d\'un nom');
+            } else { send(name.value) }
+        };
+
+        var foo = document.getElementById("footer");
+        foo.appendChild(but);
+        foo.appendChild(name);
+    }
 
     document.getElementById("prev_zone").style.height = '500px';
-    document.getElementById("footer").appendChild(but);
 }
 
 
-function send() {
-    var prv0 = document.getElementById("prev0");
-    var prv1 = document.getElementById("prev1");
-    var u0 = prv0.toDataURL();
-    var u1 = prv1.toDataURL();
-    var cl0 = encodeURIComponent(u0.replace(/^data:image\/(png|jpg);base64,/, ""));
-    var cl1 = encodeURIComponent(u1.replace(/^data:image\/(png|jpg);base64,/, ""));
+function send(name) {
+    var cl0 = encodeURIComponent(document.getElementById("prev0").toDataURL().replace(/^data:image\/(png|jpg);base64,/, ""));
+    var cl1 = encodeURIComponent(document.getElementById("prev1").toDataURL().replace(/^data:image\/(png|jpg);base64,/, ""));
     var data = {
         'im0': cl0,
-        'im1': cl1
+        'im1': cl1,
+        'name': name
     };
     request("http://localhost:8080/Camagru/server/save_image.php", data, "POST", read_resp);
 }

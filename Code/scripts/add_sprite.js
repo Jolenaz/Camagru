@@ -1,15 +1,15 @@
 var sprite_array = [];
 
 class Sprite_icone {
-    constructor(x, y, quos, ang, sp) {
+    constructor(x, y, quos, ang, sp, width, height) {
         this.x = x;
         this.y = y;
         this.quos = quos;
         this.ang = ang;
         this.id = sp.id;
         this.name = sp.name;
-        this.width = sp.width;
-        this.height = sp.height;
+        this.width = width;
+        this.height = height;
     }
 
     move(x, y) {
@@ -63,14 +63,13 @@ function refresh_sprite() {
     }
 }
 
-function add_sprite(spr_obj, quos) {
+function add_sprite(spr_obj, quos, width, height) {
 
     var sp = JSON.parse(spr_obj);
 
     var tmp;
 
-    var sprite = new Sprite_icone(150, 150, quos, 0, sp)
-
+    var sprite = new Sprite_icone(150, 150, quos, 0, sp, width, height);
     //Creation de la premiere ligne
 
     var up = document.createElement("button");
@@ -138,6 +137,13 @@ function add_sprite(spr_obj, quos) {
     //ajout des lignes au controler
 
     var list = document.getElementById('current_sprites');
+    if (!document.getElementById('take')) {
+        var take = document.createElement('button');
+        take.id = 'take';
+        take.onclick = function() { take_picture() };
+        take.appendChild(document.createTextNode('prendre la photo'));
+        list.appendChild(take);
+    }
     var b = document.createElement("div");
     b.className = "remote";
 
@@ -145,6 +151,7 @@ function add_sprite(spr_obj, quos) {
     b.appendChild(lign_2);
 
     list.appendChild(b);
+
 
     sprite_array.push(sprite);
     refresh_sprite();

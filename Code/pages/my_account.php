@@ -1,4 +1,7 @@
-
+<?PHP
+if($_SESSION['log']==false)
+	header('Location: main.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>

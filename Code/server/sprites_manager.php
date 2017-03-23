@@ -15,7 +15,7 @@ function pull_sprites(){
 
     while($result = $sth->fetch(PDO::FETCH_ASSOC))
     {
-        $pro = new sprite(array('id' => $result['id'], 'name' => $result['name'], 'width' => $result['width'], 'height' => $result['height']));
+        $pro = new sprite(array('id' => $result['id'], 'name' => $result['name']));
         $sprites[] = $pro;
     }
 

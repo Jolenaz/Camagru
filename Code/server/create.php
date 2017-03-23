@@ -75,6 +75,14 @@ mail(
     
 );
 
+$sth = $dbh->prepare("SELECT * FROM `Users` WHERE `userName` = ? AND `password` = ?;");
+
+$sth->bindParam(1, $login, PDO::PARAM_STR);
+$sth->bindParam(2, $pass, PDO::PARAM_STR);
+$sth->execute();
+$result = $sth->fetch(PDO::FETCH_ASSOC);
+
+$_SESSION['id'] = $result['id'];
 $_SESSION['log'] = true;
 $_SESSION['user'] = $login;
 

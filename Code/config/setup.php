@@ -17,23 +17,21 @@ try {
     die();
 }
 
-$dbh2->exec("CREATE TABLE IF NOT EXISTS Images (
+$dbh2->exec("CREATE TABLE IF NOT EXISTS Photos (
     id int(11) NOT NULL AUTO_INCREMENT,
+    userId int(11),
     name VARCHAR(40),
-    path VARCHAR(255),
     PRIMARY KEY (id)
     )");
 
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Sprites (
     id int(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(40),
-    width int(11),
-    height int(11),
     PRIMARY KEY (id)
     )");
 
-$dbh2->exec("INSERT INTO `Sprites`(`id`, `name`, `width`,`height`) VALUES (1,'Choixpeau',500,385) ON DUPLICATE KEY UPDATE `id` = 1");
-$dbh2->exec("INSERT INTO `Sprites`(`id`, `name`, `width`,`height`) VALUES (2,'Pipe',600,392) ON DUPLICATE KEY UPDATE `id` = 2");
+$dbh2->exec("INSERT INTO `Sprites`(`id`, `name`) VALUES (1,'Choixpeau') ON DUPLICATE KEY UPDATE `id` = 1");
+$dbh2->exec("INSERT INTO `Sprites`(`id`, `name`) VALUES (2,'Pipe') ON DUPLICATE KEY UPDATE `id` = 2");
 
 
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Users (
@@ -52,4 +50,6 @@ $dbh2->exec("CREATE TABLE IF NOT EXISTS Comments (
     PRIMARY KEY (id)
     )");
 
+$dbh = null;
+$dbh2 = null;
 ?>

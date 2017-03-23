@@ -31,6 +31,10 @@ if ($result == null)
         ';
         die();
 }
+else
+{
+    $_SESSION['id'] = $result['id'];
+}
 
 $sth = null;
 $dbh = null;

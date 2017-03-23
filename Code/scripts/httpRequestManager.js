@@ -42,7 +42,3 @@ function request(url, data, method, callback) {
     };
     xhr.send(dataStr);
 }
-
-function logg() {
-    console.log("kakak");
-}

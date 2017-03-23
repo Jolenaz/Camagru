@@ -1,4 +1,6 @@
 <?php
+    if($_SESSION['log']==false)
+	    header('Location: main.php');
     session_start();
     include_once '../class/class.php';
     include_once '../server/sprites_manager.php';
@@ -29,18 +31,20 @@
         <main>
             <aside>
                 <?php
+                    
                     foreach ($sprites as $sprite)
                     {
-                        $quos = calc_quos($sprite->getSize());
+                        $img = imagecreatefrompng('../sprites/sp' . $sprite->getID() . '.png');
+                        $quos = calc_quos($img);
                         echo"
                             <img 
                             id=sp" . $sprite->getID() . "' 
                             src='../sprites/sp" . $sprite->getID() . ".png' 
-                            style='width:".$sprite->getWidth() * $quos."px;height:".$sprite->getHeight() * $quos."px;'
-                            onclick='add_sprite(\"" . $sprite->get() . "\", " . $quos . ")'
+                            style='width:".imagesx($img) * $quos."px;height:".imagesy($img) * $quos."px;'
+                            onclick='add_sprite(\"" . $sprite->get() . "\", " . $quos . ", " . imagesx($img) . ", " . imagesy($img) . ")'
                             >
                         ";
-                        $sprite->change_size($quos);
+                        imagedestroy($img);
                     }   
                 ?>
             </aside>
@@ -55,7 +59,6 @@
                 </div>
                 <button onclick="getVideo()">Start Cam</button>
                 <div id="current_sprites">
-                <button onclick="upload()">upload</button>
                 </div>
             </article>
             <nav>
