@@ -45,9 +45,15 @@ $dbh2->exec("CREATE TABLE IF NOT EXISTS Users (
 
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Comments (
     id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
-    imageId SMALLINT NOT NULL,
+    photoId SMALLINT NOT NULL,
     comment TEXT,
+    userId int(11),
     PRIMARY KEY (id)
+    )");
+
+$dbh2->exec("CREATE TABLE IF NOT EXISTS Likes (
+    photoId SMALLINT NOT NULL,
+    userId int(11)
     )");
 
 $dbh = null;

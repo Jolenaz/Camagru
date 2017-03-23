@@ -17,29 +17,8 @@
     <body>
         <header>
             <?php
-        if ($_SESSION['log'] == false)
-        {
-            echo '
-            <form action="connection.php">
-                <input type="submit" value="Identifiez-vous !" />
-            </form>
-            ';
-        }
-        else
-        {
-            echo '
-            <form action="../server/deconnection.php">
-                <input type="submit" value="Deconnection !" />
-            </form>
-            '; 
-			echo '
-            <form action="my_account.php">
-                <input type="submit" value="Mon Compte" />
-            </form>
-            '; 
-        }
-        
-        ?>
+                include('modules/header.php');
+            ?>
         </header>
         <main>
             <aside>
@@ -49,22 +28,8 @@
                 article
             </article>
             <nav>
-			    nav
 			    <?php
-				if ($_SESSION['log'] == true)
-				{
-					echo '
-					<form action="../pages/montage.php">
-						<input type="submit" value="Go Montage" />
-					</form>
-					'; 
-				}
-				else
-				{
-					echo '
-					<button onclick="ConnectionNeeded()">Go Montage</button>
-					'; 
-				}
+                    include('modules/nav.php');
         		?>
             </nav>
         </main>
@@ -73,7 +38,7 @@
         </footer>
 		<script>
 		function ConnectionNeeded() {
-			alert("Connection requise pour cett section");
+			alert("Connection requise pour cette section");
 		}
 		</script>
     </body>

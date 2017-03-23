@@ -4,7 +4,8 @@ class photo
     private $_id;
     private $_name;
     private $_userId;
-    private $_likes = [];
+    private $_likes;
+    private $_userName;
 
     public function __construct(array $kwargs){
     try{
@@ -41,4 +42,24 @@ class photo
     public function getUserId(){
         return $this->_userId;
     }
+
+    public function getUserName(){
+        return $this->_userName;
+    }
+
+    public function setLikes($likes)
+    {
+        $this->likes = $likes;
+    }
+
+    public function getLikes()
+    {
+        return count($this->likes);
+    }
+
+    public function setUserName($name)
+    {
+        $this->_userName = $name;
+    }
+
 }

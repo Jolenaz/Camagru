@@ -1,6 +1,7 @@
 <?PHP
-if($_SESSION['log']==false)
-	header('Location: main.php');
+    session_start();
+    if($_SESSION['log']==true)
+        header('Location: main.php');
 ?>
 <!DOCTYPE html>
 <html>

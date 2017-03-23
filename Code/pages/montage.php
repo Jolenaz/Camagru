@@ -1,7 +1,7 @@
 <?php
+    session_start();
     if($_SESSION['log']==false)
 	    header('Location: main.php');
-    session_start();
     include_once '../class/class.php';
     include_once '../server/sprites_manager.php';
     include_once '../server/calc_quos.php';
@@ -21,12 +21,9 @@
 
     <body>
         <header>
-            <form action="../server/deconnection.php">
-                <input type="submit" value="Deconnection !" />
-            </form>
-            <form action="my_account.php">
-                <input type="submit" value="Mon Compte" />
-            </form>    
+            <?php
+                include('modules/header.php');
+            ?>   
         </header>
         <main>
             <aside>
@@ -62,7 +59,9 @@
                 </div>
             </article>
             <nav>
-                nav
+			    <?php
+                    include('modules/nav.php');
+        		?>
             </nav>
         </main>
         <footer id="footer">
