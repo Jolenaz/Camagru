@@ -53,9 +53,10 @@ if ($result != null)
 
 
 
-$mail = filter_input(INPUT_POST, mail, FILTER_SANITIZE_STRING);
+$mail = filter_input(INPUT_POST, mail, FILTER_SANITIZE_EMAIL);
 
 $pass = hash("whirlpool", $pass);
+
 
 $sth = $dbh->prepare("INSERT INTO `Users` (`userName`, `mail`, `password`, `admin`) VALUES (?, ?, ?, '0');");
 

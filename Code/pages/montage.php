@@ -27,16 +27,21 @@
         </header>
         <main>
             <aside>
-                <?php
-                    
+                <?php  
                     foreach ($sprites as $sprite)
                     {
-                        $img = imagecreatefrompng('../sprites/sp' . $sprite->getID() . '.png');
+                        $format = $sprite->getFormat();
+                        if ($format == "png")
+                            $img = imagecreatefrompng('../sprites/sp' . $sprite->getID() . '.png');
+                        else if ($format == "jpeg")
+                            $img = imagecreatefromjpeg('../sprites/sp' . $sprite->getID() . '.jpeg');
+                        else
+                            break;
                         $quos = calc_quos($img);
                         echo"
                             <img 
-                            id=sp" . $sprite->getID() . "' 
-                            src='../sprites/sp" . $sprite->getID() . ".png' 
+                            id=sp" . $sprite->getID() . "
+                            src='../sprites/sp" . $sprite->getID() . ".".$sprite->getFormat()."' 
                             style='width:".imagesx($img) * $quos."px;height:".imagesy($img) * $quos."px;'
                             onclick='add_sprite(\"" . $sprite->get() . "\", " . $quos . ", " . imagesx($img) . ", " . imagesy($img) . ")'
                             >
@@ -44,6 +49,17 @@
                         imagedestroy($img);
                     }   
                 ?>
+                <div class = "sprite_upload">
+                    Telecharger une nouvelle icone.
+                    <form action="../server/upload_sprite.php" method="post" enctype="multipart/form-data">
+                        Fichier: <input type="file" name="fileToUpload" id="fileToUpload"><br>
+                        Nom: <input type="text" id="name"><br>
+                        format:<br>
+                        <input type="radio" name="format" value="png" checked>png<br>
+                        <input type="radio" name="format" value="jpeg">jpeg<br>
+                        <input type="submit" value="Ajouter" name="submit">
+                    </form>
+                </div>
             </aside>
             <article >
                 <div>
@@ -52,9 +68,14 @@
                 </div>
                 <div id="zone_montage">
                     <canvas id="canvas" width="640" height="480" ></canvas>
-                    <video id="videoScreen"></video>     
+                    <div id='fond'>
+                        <video id="videoScreen"></video>
+                    </div>
                 </div>
-                <button onclick="getVideo()">Start Cam</button>
+                <button onclick="getVideo()">Démarrer la WebCam</button>
+                <div id='uploader'>
+                    <button onclick="upload_fond()">Utiliser une photo</button>
+                </div>
                 <div id="current_sprites">
                 </div>
             </article>
@@ -75,6 +96,7 @@
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
         <script src="../scripts/upload.js" type="text/javascript"></script>
+        <script src="../scripts/upload_fond.js" type="text/javascript"></script>
         <script>
 
         </script>

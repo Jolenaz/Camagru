@@ -26,6 +26,11 @@ article {
     z-index: 1;
 }
 
+#fond {
+    position: absolute;
+    z-index: 1;
+}
+
 #zone_montage {
     height: 500px;
 }

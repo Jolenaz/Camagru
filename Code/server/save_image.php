@@ -39,4 +39,7 @@ imagecopy($fond,$sprite,0,0,0,0,imagesx($sprite),imagesy($sprite));
 
 imagepng($fond,"../galerie/p".$id.".png");
 
+$dbh = null;
+$sth = null;
+
 ?>

@@ -11,7 +11,7 @@ function getVideo() {
         navigator.getUserMedia({ audio: false, video: { width: 520, height: 520 } },
             function(stream) {
                 if (is_recording) {
-                    var video = document.querySelector('#videoScreen');
+                    var video = document.getElementById('videoScreen');
                     video.src = window.URL.createObjectURL(stream);
                     video.onloadedmetadata = function(e) {
                         video.play();

@@ -1,6 +1,12 @@
 function take_picture() {
     var can1 = document.getElementById("canvas");
-    var vid = document.getElementById("videoScreen");
+    if (!document.getElementById('image_fond'))
+        var vid = document.getElementById("videoScreen");
+    else {
+        var vid = new Image();
+        vid.src = document.getElementById('image_fond').src;
+        vid.setAttribute('crossOrigin', 'anonymous');
+    }
 
     var data_img1 = can1.toDataURL();
     var img1 = new Image();

@@ -8,6 +8,7 @@ class Sprite_icone {
         this.ang = ang;
         this.id = sp.id;
         this.name = sp.name;
+        this.format = sp.format;
         this.width = width;
         this.height = height;
     }
@@ -41,7 +42,7 @@ function refresh_sprite() {
 
     for (var i = 0; i < sprite_array.length; ++i) {
         var img = new Image();
-        img.src = "../sprites/sp" + sprite_array[i].id + ".png";
+        img.src = "../sprites/sp" + sprite_array[i].id + "." + sprite_array[i].format;
         sprite_array[i].add_img(img);
 
         if (i == sprite_array.length - 1) {
