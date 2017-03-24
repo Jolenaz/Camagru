@@ -5,6 +5,11 @@
     include_once '../class/class.php';
     include_once '../server/sprites_manager.php';
     include_once '../server/calc_quos.php';
+    if ($_SESSION['fond'] === true)
+        {
+            $use_fond = true;
+            $_SESSION['fond'] = false;
+        }
     $sprites = pull_sprites();
 ?>
     <!DOCTYPE html>
@@ -70,6 +75,14 @@
                     <canvas id="canvas" width="640" height="480" ></canvas>
                     <div id='fond'>
                         <video id="videoScreen"></video>
+                        <?php
+                            if ($use_fond === true)
+                            {
+                                echo'
+                                    <img src="../tmp" id="image_fond">
+                                ';
+                            }
+                        ?>
                     </div>
                 </div>
                 <button onclick="getVideo()">Démarrer la WebCam</button>

@@ -1,28 +1,26 @@
 function upload_fond() {
 
-    if (document.getElementById("url_fond"))
+    if (document.getElementById("fondToUpload"))
         return;
 
-    var url_fond = document.createElement('input');
-    url_fond.id = "url_fond";
+    var url_fond = document.createElement('form');
+    url_fond.method = "post";
+    url_fond.enctype = "multipart/form-data";
+    url_fond.action = "../server/upload_fond.php";
 
-    var but = document.createElement('button');
-    but.onclick = function() { get_fond(url_fond.value) };
+    var image_file = document.createElement('input');
+    image_file.type = "file";
+    image_file.id = "fondToUpload";
+    image_file.name = "fondToUpload";
+
+    var but = document.createElement('input');
+    but.type = "submit";
     but.appendChild(document.createTextNode("OK"));
 
+    url_fond.appendChild(image_file);
+    url_fond.appendChild(but);
+
     var up_div = document.getElementById('uploader');
-    up_div.appendChild(document.createTextNode("Entrer l'url de l'image au format png ou jpeg:"));
     up_div.appendChild(url_fond);
-    up_div.appendChild(but);
-
-}
-
-function get_fond(url_fond) {
-    var video = document.getElementById('fond');
-
-    var fond = new Image();
-    fond.src = url_fond;
-    fond.id = "image_fond";
-    video.appendChild(fond);
 
 }
