@@ -36,7 +36,7 @@ class photo
     }
 
     public function getId(){
-        return $this->_Id;
+        return $this->_id;
     }
 
     public function getUserId(){

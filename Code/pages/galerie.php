@@ -1,11 +1,9 @@
 <?php
     session_start();
-    if($_SESSION['log']==false)
-	    header('Location: main.php');
     include_once '../class/class.php';
     include_once '../server/photos_manager.php';
     $photos = pull_photos();
-    $nbPages = floor(count($photos) / 3);
+    $nbPages = floor(count($photos) / 3) + 1;
     $page = filter_input(INPUT_POST, page, FILTER_SANITIZE_STRING);
     $page = ($page == "Go Galerie"? 1 : $page);
 ?>
@@ -43,6 +41,7 @@
                         Nom: ".$photo->getName()."</br>
                         UserName: ".$photo->getUserName()."</br>
                         Likes: ".$photo->getLikes()."</br>
+                        <img src='../galerie/p".$photo->getId().".png'>
                         </div>
                         ";
                     }
