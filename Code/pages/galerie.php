@@ -36,6 +36,8 @@
                     for($i = 3 * ($page - 1); $i < 3 * $page; ++$i)
                     {
                         $photo = $photos[$i];
+                        if ($photo === null)
+                            break;
                         echo"
                         <div>
                         Nom: ".$photo->getName()."</br>

@@ -1,7 +1,6 @@
 <?php
-function calc_quos($img){
+function calc_quos($img, $size){
     $max = max([imagesx($img), imagesy($img)]);
-    $aside_width = 100;
-    return (100 / $max);
+    return ($size / $max);
 }
 ?>

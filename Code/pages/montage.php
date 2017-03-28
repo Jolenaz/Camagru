@@ -42,7 +42,7 @@
                             $img = imagecreatefromjpeg('../sprites/sp' . $sprite->getID() . '.jpeg');
                         else
                             break;
-                        $quos = calc_quos($img);
+                        $quos = calc_quos($img, 100);
                         echo"
                             <img 
                             id=sp" . $sprite->getID() . "
@@ -78,9 +78,17 @@
                         <?php
                             if ($use_fond === true)
                             {
-                                echo'
-                                    <img src="../tmp" id="image_fond">
-                                ';
+                                $info_f = getimagesize("../tmp");
+                                if ($info_f['mime'] == "image/png")
+                                    $img_f = imagecreatefrompng("../tmp");
+                                else if ($info_f['mime'] == "image/jpeg")
+                                    $img_f = imagecreatefromjpeg("../tmp");
+                                $quos_f = calc_quos($img_f, 500);
+                                echo"
+                                    <img src='../tmp'
+                                    id='image_fond'
+                                    style='width:".imagesx($img_f) * $quos_f."px; height:".imagesy($img_f) * $quos_f."px;'>
+                                ";
                             }
                         ?>
                     </div>

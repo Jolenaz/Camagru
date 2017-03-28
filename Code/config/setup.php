@@ -24,6 +24,16 @@ $dbh2->exec("CREATE TABLE IF NOT EXISTS Photos (
     PRIMARY KEY (id)
     )");
 
+$dbh2->exec("INSERT INTO `Photos`(`id`, `name`,`userId`) VALUES (1,'lito',1) ON DUPLICATE KEY UPDATE `id` = 1");
+$dbh2->exec("INSERT INTO `Photos`(`id`, `name`,`userId`) VALUES (2,'lito2',1) ON DUPLICATE KEY UPDATE `id` = 2");
+$dbh2->exec("INSERT INTO `Photos`(`id`, `name`,`userId`) VALUES (3,'Iron_Jonas',2) ON DUPLICATE KEY UPDATE `id` = 3");
+$dbh2->exec("INSERT INTO `Photos`(`id`, `name`,`userId`) VALUES (4,'will1',3) ON DUPLICATE KEY UPDATE `id` = 4");
+$dbh2->exec("INSERT INTO `Photos`(`id`, `name`,`userId`) VALUES (5,'will2',3) ON DUPLICATE KEY UPDATE `id` = 5");
+$dbh2->exec("INSERT INTO `Photos`(`id`, `name`,`userId`) VALUES (6,'jessica1',4) ON DUPLICATE KEY UPDATE `id` = 6");
+$dbh2->exec("INSERT INTO `Photos`(`id`, `name`,`userId`) VALUES (7,'emma1',4) ON DUPLICATE KEY UPDATE `id` = 7");
+
+
+
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Sprites (
     id int(11) NOT NULL AUTO_INCREMENT,
     name VARCHAR(40),
