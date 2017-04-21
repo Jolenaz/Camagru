@@ -1,6 +1,6 @@
 <?php
 require_once('../class/class.php');
-function pull_photos(){
+function pull_photos($name){
     try {
         $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
     } catch (PDOException $e) {
@@ -8,7 +8,14 @@ function pull_photos(){
         return (null);
     }
 
-    $sth = $dbh->prepare("SELECT * FROM `Photos`;");
+   if ($name === NULL)
+        $sth = $dbh->prepare("SELECT * FROM `Photos`;");
+   else
+   {
+
+       //________________________________________________________________________________ICI RECUPERER L ID DU USERNAME___________________________________________________
+       $sth = $dbh->prepare("SELECT * FROM `Photos` WHERE `userName` = " . $name . ";");
+   }
     $sth->execute();
 
     $photos = array();

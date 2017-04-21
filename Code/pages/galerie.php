@@ -2,7 +2,7 @@
     session_start();
     include_once '../class/class.php';
     include_once '../server/photos_manager.php';
-    $photos = pull_photos();
+    $photos = pull_photos(NULL);
     $nbPages = floor(count($photos) / 3) + 1;
     $page = filter_input(INPUT_POST, page, FILTER_SANITIZE_STRING);
     $page = ($page == "Go Galerie"? 1 : $page);
@@ -41,7 +41,11 @@
                         Nom: ".$photo->getName()."</br>
                         UserName: ".$photo->getUserName()."</br>
                         Likes: ".$photo->getLikes()."</br>
-                        <img src='../galerie/p".$photo->getId().".png'>
+                        <img 
+                        src='../galerie/p".$photo->getId().".png'
+                        onclick='select(\"".$photo->get()."\")'
+                        class='galery_image'
+                        >
                         </div>
                         ";
                     }
@@ -68,6 +72,7 @@
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
         <script src="../scripts/upload.js" type="text/javascript"></script>
+        <script src="../scripts/select.js" type="text/javascript"></script>
         <script>
 
         </script>

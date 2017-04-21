@@ -22,8 +22,8 @@
     if ($_SESSION['log'] == true)
     {
         echo '
-        <form action="../pages/ma_galerie.php">
-            <input type="submit" value="Ma Galerie" />
+        <form method="POST" action="../pages/ma_galerie.php">
+            <input type="submit" name="page" value="Ma Galerie" />
         </form>
         '; 
     }

@@ -56,11 +56,11 @@ $dbh2->exec("CREATE TABLE IF NOT EXISTS Users (
     admin TINYINT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (id)
     )");
-
-$dbh2->exec("INSERT INTO `Users`(`id`, `userName`,`mail`,`password`) VALUES (1,'Jo1','jbelless@student.42.fr','44ccce730474caf4aa56cc0a87120e0b678c631e78f28410dd5e85679e4249e46cb1d4353d309d4191a7f1b0c900eeae6c60685c1993fcf98c319df42e0b51eb') ON DUPLICATE KEY UPDATE `id` = 1");
-$dbh2->exec("INSERT INTO `Users`(`id`, `userName`,`mail`,`password`) VALUES (2,'Jo2','jbelless@student.42.fr','44ccce730474caf4aa56cc0a87120e0b678c631e78f28410dd5e85679e4249e46cb1d4353d309d4191a7f1b0c900eeae6c60685c1993fcf98c319df42e0b51eb') ON DUPLICATE KEY UPDATE `id` = 2");
-$dbh2->exec("INSERT INTO `Users`(`id`, `userName`,`mail`,`password`) VALUES (3,'Jo3','jbelless@student.42.fr','44ccce730474caf4aa56cc0a87120e0b678c631e78f28410dd5e85679e4249e46cb1d4353d309d4191a7f1b0c900eeae6c60685c1993fcf98c319df42e0b51eb') ON DUPLICATE KEY UPDATE `id` = 3");
-$dbh2->exec("INSERT INTO `Users`(`id`, `userName`,`mail`,`password`) VALUES (4,'Jo4','jbelless@student.42.fr','44ccce730474caf4aa56cc0a87120e0b678c631e78f28410dd5e85679e4249e46cb1d4353d309d4191a7f1b0c900eeae6c60685c1993fcf98c319df42e0b51eb') ON DUPLICATE KEY UPDATE `id` = 4");
+//password 123456789a
+$dbh2->exec("INSERT INTO `Users`(`id`, `userName`,`mail`,`password`) VALUES (1,'Jo1','jbelless@student.42.fr','038eece76d1733ccfcd8a93c5ba5e9eef673c3bb5898c42a569811fdbb30fa344ef591e5a7fbf48df67c3640bd505c5ed1adfa25bb925bb71b20c73fcf506209') ON DUPLICATE KEY UPDATE `id` = 1");
+$dbh2->exec("INSERT INTO `Users`(`id`, `userName`,`mail`,`password`) VALUES (2,'Jo2','jbelless@student.42.fr','038eece76d1733ccfcd8a93c5ba5e9eef673c3bb5898c42a569811fdbb30fa344ef591e5a7fbf48df67c3640bd505c5ed1adfa25bb925bb71b20c73fcf506209') ON DUPLICATE KEY UPDATE `id` = 2");
+$dbh2->exec("INSERT INTO `Users`(`id`, `userName`,`mail`,`password`) VALUES (3,'Jo3','jbelless@student.42.fr','038eece76d1733ccfcd8a93c5ba5e9eef673c3bb5898c42a569811fdbb30fa344ef591e5a7fbf48df67c3640bd505c5ed1adfa25bb925bb71b20c73fcf506209') ON DUPLICATE KEY UPDATE `id` = 3");
+$dbh2->exec("INSERT INTO `Users`(`id`, `userName`,`mail`,`password`) VALUES (4,'Jo4','jbelless@student.42.fr','038eece76d1733ccfcd8a93c5ba5e9eef673c3bb5898c42a569811fdbb30fa344ef591e5a7fbf48df67c3640bd505c5ed1adfa25bb925bb71b20c73fcf506209') ON DUPLICATE KEY UPDATE `id` = 4");
 
 
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Comments (
