@@ -1,7 +1,7 @@
 <?php
     session_start();
-    include_once '../class/class.php';
-    include_once '../server/photos_manager.php';
+    require_once '../class/class.php';
+    require_once '../server/photos_manager.php';
     $photos = pull_photos(NULL);
     $nbPages = floor(count($photos) / 3) + 1;
     $page = filter_input(INPUT_POST, page, FILTER_SANITIZE_STRING);

@@ -3,15 +3,16 @@ session_start();
 $im1 = (isset($_POST["im1"])) ? $_POST["im1"] : NULL;
 $im0 = (isset($_POST["im0"])) ? $_POST["im0"] : NULL;
 $name = (isset($_POST["name"])) ? $_POST["name"] : NULL;
-
 if ($im0 == NULL || $im1 == NULL || $name == NULL) {
 	echo "Le téléchargement des images a échoué!";
 } 
+require_once("../config/database.php");
 
 try {
-    $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
-} catch (PDOException $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
+    $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+} catch (PDOException $e){
+    print ("Erreur!: " . $e->getMessage() . "<br/>");
+    die();
 }
 
 $name = filter_input(INPUT_POST, name, FILTER_SANITIZE_STRING);

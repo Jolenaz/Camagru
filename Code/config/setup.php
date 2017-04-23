@@ -1,5 +1,5 @@
 <?php
-include("database.php");
+require_once("database.php");
 
 try {
     $dbh = new PDO("mysql:host=" . $DB_HOST, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));

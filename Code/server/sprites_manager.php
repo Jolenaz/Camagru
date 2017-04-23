@@ -1,28 +1,32 @@
 <?php
 require_once('../class/class.php');
+
+
 function pull_sprites(){
-    try {
-        $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
-    } catch (PDOException $e) {
-        echo 'Connexion échouée : ' . $e->getMessage();
-        return (null);
-    }
+require_once('../config/database.php');
 
-    $sth = $dbh->prepare("SELECT * FROM `Sprites`");
-    $sth->execute();
+try {
+    $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+} catch (PDOException $e){
+    print ("Erreur!: " . $e->getMessage() . "<br/>");
+    die();
+}
 
-    $sprites = array();
+$sth = $dbh->prepare("SELECT * FROM `Sprites`");
+$sth->execute();
 
-    while($result = $sth->fetch(PDO::FETCH_ASSOC))
-    {
-        $pro = new sprite(array('id' => $result['id'], 'name' => $result['name'], 'format' => $result['format'],));
-        $sprites[] = $pro;
-    }
+$sprites = array();
 
-    $sth = null;
-    $dbh = null;
+while($result = $sth->fetch(PDO::FETCH_ASSOC))
+{
+    $pro = new sprite(array('id' => $result['id'], 'name' => $result['name'], 'format' => $result['format'],));
+    $sprites[] = $pro;
+}
 
-    return $sprites;
+$sth = null;
+$dbh = null;
+
+return $sprites;
 }
 
 ?>

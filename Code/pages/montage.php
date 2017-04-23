@@ -2,9 +2,9 @@
     session_start();
     if($_SESSION['log']==false)
 	    header('Location: main.php');
-    include_once '../class/class.php';
-    include_once '../server/sprites_manager.php';
-    include_once '../server/calc_quos.php';
+    require_once '../class/class.php';
+    require_once '../server/sprites_manager.php';
+    require_once '../server/calc_quos.php';
     if ($_SESSION['fond'] === true)
         {
             $use_fond = true;

@@ -1,10 +1,13 @@
 <?php
 session_start();
-include("../server/check_pass.php");
+require_once("../server/check_pass.php");
+require_once("../config/database.php");
+
 try {
-    $dbh = new PDO("mysql:dbname=Cama;host=localhost", "root", "");
-} catch (PDOException $e) {
-    echo 'Connexion échouée : ' . $e->getMessage();
+    $dbh = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+} catch (PDOException $e){
+    print ("Erreur!: " . $e->getMessage() . "<br/>");
+    die();
 }
 
 $login = $_SESSION['user'];
