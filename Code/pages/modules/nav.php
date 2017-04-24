@@ -19,6 +19,11 @@
             <input type="submit" name="page" value="Go Galerie" />
         </form>
     ';
+    echo'
+        <form action="../pages/main.php">
+            <input type="submit" value="Go Accueil" />
+        </form>
+    ';
     if ($_SESSION['log'] == true)
     {
         echo '

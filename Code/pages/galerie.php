@@ -30,34 +30,38 @@
 
             </aside>
             <article>
-                <?php
-                    for($i = 3 * ($page - 1); $i < 3 * $page; ++$i)
-                    {
-                        $photo = $photos[$i];
-                        if ($photo === null)
-                            break;
-                        echo"
-                        <div>
-                        Nom: ".$photo->getName()."</br>
-                        UserName: ".$photo->getUserName()."</br>
-                        Likes: ".$photo->getLikes()."</br>
-                        <img 
-                        src='../galerie/p".$photo->getId().".png'
-                        onclick='select(\"".$photo->get()."\")'
-                        class='galery_image'
-                        >
-                        </div>
-                        ";
-                    }
-                    for($j = 1; $j <= $nbPages; ++$j)
-                    {
-                        echo'
-                        <form method="POST" action="../pages/galerie.php">
-                            <input type="submit" name="page" value="'.$j.'" />
-                        </form>
-                        ';
-                    }
-                ?>
+                <div id ="galerie_list">
+                    <?php
+                        for($i = 3 * ($page - 1); $i < 3 * $page; ++$i)
+                        {
+                            $photo = $photos[$i];
+                            if ($photo === null)
+                                break;
+                            echo"
+                            <div>
+                            Nom: ".$photo->getName()."</br>
+                            UserName: ".$photo->getUserName()."</br>
+                            Likes: ".$photo->getLikes()."</br>
+                            <img 
+                            src='../galerie/p".$photo->getId().".png'
+                            onclick='select(\"".$photo->get()."\")'
+                            class='galery_image'
+                            >
+                            </div>
+                            ";
+                        }
+                        for($j = 1; $j <= $nbPages; ++$j)
+                        {
+                            echo'
+                            <form method="POST" action="../pages/galerie.php">
+                                <input type="submit" name="page" value="'.$j.'" />
+                            </form>
+                            ';
+                        }
+                    ?>
+                </div>
+                <div id="selected_pict">
+                </div>
             </article>
             <nav>
 			    <?php
@@ -74,7 +78,9 @@
         <script src="../scripts/upload.js" type="text/javascript"></script>
         <script src="../scripts/select.js" type="text/javascript"></script>
         <script>
-
+		function ConnectionNeeded() {
+			alert("Connection requise pour cette section");
+		}
         </script>
     </body>
 
