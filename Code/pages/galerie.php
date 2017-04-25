@@ -43,8 +43,9 @@
                             UserName: ".$photo->getUserName()."</br>
                             Likes: ".$photo->getLikes()."</br>
                             <img 
+                            id = 'photo".$photo->getId()."'
                             src='../galerie/p".$photo->getId().".png'
-                            onclick='select(\"".$photo->get()."\")'
+                            onclick='select(\"".$photo->getId()."\")'
                             class='galery_image'
                             >
                             </div>
