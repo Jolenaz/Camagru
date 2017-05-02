@@ -64,6 +64,9 @@ if ($format == "png")
 else if ($format == "jpeg")
     imagejpeg($img, "../sprites/sp".$id.".jpeg");
 
+$sth = null;
+$dbh = null;
+
 header('Location: ../pages/montage.php');
 
 ?>

@@ -53,6 +53,7 @@ while($result = $sth->fetch(PDO::FETCH_ASSOC))
     $sth2 = null;
 }
 
+$sth3 = null;
 $sth = null;
 $dbh = null;
 

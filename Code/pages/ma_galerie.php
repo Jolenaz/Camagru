@@ -49,8 +49,12 @@
                         class='galery_image'
                         >
                         </div>
+                        <script src='../scripts/select.js' type='text/javascript'>
+                            print_comment(\"".$photo->get()."\");
+                        </script>
                         ";
                     }
+                    //_____________________________ici print comment doesnt works________________
                     for($j = 1; $j <= $nbPages; ++$j)
                     {
                         echo'
@@ -74,7 +78,6 @@
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
         <script src="../scripts/upload.js" type="text/javascript"></script>
-        <script>
 
         </script>
     </body>

@@ -14,14 +14,23 @@ $sth = $dbh->prepare("SELECT * FROM `Comments` WHERE  `photoId` = ?;");
 $sth->bindParam(1, $photoId, PDO::PARAM_STR);
 $sth->execute();
 
-$response = "";
+$response = "[";
 
 
 while($result = $sth->fetch(PDO::FETCH_ASSOC))
 {
-	$comment = "{'userId':" . $result['userId'] . ",'comment':" . $result['comment'] . "},";
-	$response .= $comment;
-}
+    $sth2 = $dbh->prepare("SELECT `userName` FROM `Users` WHERE  `id` = ?;");
+    $sth2->bindParam(1, $result['userId'], PDO::PARAM_STR);
+    $sth2->execute();
+    $result2 = $sth2->fetch(PDO::FETCH_ASSOC);
 
+	$comment = '{"userId":"' . $result2["userName"] . '","comment":"' . $result["comment"] . '"},';
+	$response .= $comment;
+    $sth2 = null;
+}
+$response = substr($response, 0, -1);
+$response .= "]";
+$sth = null;
+$dbh = null;
 print($response);
 ?>
