@@ -37,7 +37,8 @@ function request(url, data, method, callback) {
 
     xhr.onreadystatechange = function() {
         if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0)) {
-            callback(xhr.responseText);
+            if (callback)
+                callback(xhr.responseText);
         }
     };
     xhr.send(dataStr);

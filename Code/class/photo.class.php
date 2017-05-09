@@ -49,12 +49,17 @@ class photo
 
     public function setLikes($likes)
     {
-        $this->likes = $likes;
+        $this->_likes = $likes;
     }
 
     public function getLikes()
     {
-        return count($this->likes);
+        return count($this->_likes);
+    }
+
+    public function getLikes_full()
+    {
+        return $this->_likes;
     }
 
     public function setUserName($name)

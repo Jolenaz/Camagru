@@ -39,15 +39,17 @@
                         if ($photo === null)
                             break;
                         echo"
-                        <div>
+                        <div 
+                            id = 'photo".$photo->getId()."'
+                            class = 'ma_galery_image'
+                        >
                         Nom: ".$photo->getName()."</br>
                         UserName: ".$photo->getUserName()."</br>
                         Likes: ".$photo->getLikes()."</br>
                         <img 
                         src='../galerie/p".$photo->getId().".png'
-                        onclick='delete(\"".$photo->getId()."\")'
+                        onclick='delete_pict(\"".$photo->getId()."\")'
                         onload='print_comment(\"".$photo->getId()."\")'
-                        class='galery_image'
                         >
                         <div id='my_pict_comment_".$photo->getId()."' class='comment_ma_galerie'></div>
                         </div>

@@ -15,10 +15,11 @@ $sth->bindParam(1, $photoId, PDO::PARAM_STR);
 $sth->execute();
 
 $response = '{"photoId":"'.$photoId .'","data":[';
-
+$is_empty = 1;
 
 while($result = $sth->fetch(PDO::FETCH_ASSOC))
 {
+    $is_empty = 0;
     $sth2 = $dbh->prepare("SELECT `userName` FROM `Users` WHERE  `id` = ?;");
     $sth2->bindParam(1, $result['userId'], PDO::PARAM_STR);
     $sth2->execute();
@@ -28,7 +29,8 @@ while($result = $sth->fetch(PDO::FETCH_ASSOC))
 	$response .= $comment;
     $sth2 = null;
 }
-$response = substr($response, 0, -1);
+if ($is_empty === 0)
+    $response = substr($response, 0, -1);
 $response .= "]}";
 $sth = null;
 $dbh = null;

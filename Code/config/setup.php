@@ -86,25 +86,27 @@ $dbh2->exec("INSERT INTO `Comments`(`id`, `photoId`,`comment`,`userId`) VALUES (
 $dbh2->exec("INSERT INTO `Comments`(`id`, `photoId`,`comment`,`userId`) VALUES (13,7,'XD, ptdr',3) ON DUPLICATE KEY UPDATE `id` = 13");
 
 $dbh2->exec("CREATE TABLE IF NOT EXISTS Likes (
+    id SMALLINT UNSIGNED NOT NULL AUTO_INCREMENT,
     photoId SMALLINT NOT NULL,
-    userId int(11)
+    userId int(11),
+    PRIMARY KEY (id)
     )");
 //likes
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (1,2)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (1,4)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (2,2)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (3,4)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (3,1)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (3,2)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (4,1)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (5,3)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (5,2)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (6,1)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (6,4)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (7,1)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (7,2)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (7,3)");
-$dbh2->exec("INSERT INTO `Likes`(`photoId`, `UserId`) VALUES (7,4)");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (1,1,2) ON DUPLICATE KEY UPDATE `id` = 1");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (2,1,4) ON DUPLICATE KEY UPDATE `id` = 2");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (3,2,2) ON DUPLICATE KEY UPDATE `id` = 3");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (4,3,4) ON DUPLICATE KEY UPDATE `id` = 4");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (5,3,1) ON DUPLICATE KEY UPDATE `id` = 5");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (6,3,2) ON DUPLICATE KEY UPDATE `id` = 6");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (7,4,1) ON DUPLICATE KEY UPDATE `id` = 7");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (8,5,3) ON DUPLICATE KEY UPDATE `id` = 8");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (9,5,2) ON DUPLICATE KEY UPDATE `id` = 9");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (10,6,1) ON DUPLICATE KEY UPDATE `id` = 10");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (11,6,4) ON DUPLICATE KEY UPDATE `id` = 11");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (12,7,1) ON DUPLICATE KEY UPDATE `id` = 12");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (13,7,2) ON DUPLICATE KEY UPDATE `id` = 13");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (14,7,3) ON DUPLICATE KEY UPDATE `id` = 14");
+$dbh2->exec("INSERT INTO `Likes`(`id`, `photoId`, `UserId`) VALUES (15,7,4) ON DUPLICATE KEY UPDATE `id` = 15");
 
 $dbh = null;
 $dbh2 = null;
