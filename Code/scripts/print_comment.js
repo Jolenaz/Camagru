@@ -1,17 +1,4 @@
-function bold_photo(photoId) {
-    var all = document.getElementsByClassName('galery_image');
-    for (var i = 0; i < 3; ++i) {
-        if (all[i] == null)
-            break;
-        all[i].style.border = "";
-    }
-    var pic = document.getElementById(photoId);
-    pic.style.border = "solid red 3px";
-}
-
-function select(photoId) {
-    bold_photo("photo" + photoId);
-
+function print_comment(photoId) {
     var data = {
         'id': photoId
     }
@@ -19,9 +6,10 @@ function select(photoId) {
 }
 
 function append_comment(data) {
+    console.log(data);
     var comments = JSON.parse(data);
 
-    var forum = document.getElementById('selected_pict');
+    var forum = document.getElementById('my_pict_comment_' + comments.photoId);
     forum.innerHTML = "";
 
     for (var i in comments.data) {

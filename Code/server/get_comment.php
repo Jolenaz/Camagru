@@ -14,7 +14,7 @@ $sth = $dbh->prepare("SELECT * FROM `Comments` WHERE  `photoId` = ?;");
 $sth->bindParam(1, $photoId, PDO::PARAM_STR);
 $sth->execute();
 
-$response = "[";
+$response = '{"photoId":"'.$photoId .'","data":[';
 
 
 while($result = $sth->fetch(PDO::FETCH_ASSOC))
@@ -24,12 +24,12 @@ while($result = $sth->fetch(PDO::FETCH_ASSOC))
     $sth2->execute();
     $result2 = $sth2->fetch(PDO::FETCH_ASSOC);
 
-	$comment = '{"userId":"' . $result2["userName"] . '","comment":"' . $result["comment"] . '"},';
+	$comment = '{"userName":"' . $result2["userName"] . '","comment":"' . $result["comment"] . '"},';
 	$response .= $comment;
     $sth2 = null;
 }
 $response = substr($response, 0, -1);
-$response .= "]";
+$response .= "]}";
 $sth = null;
 $dbh = null;
 print($response);

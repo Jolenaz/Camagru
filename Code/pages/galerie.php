@@ -45,7 +45,7 @@
                             <img 
                             id = 'photo".$photo->getId()."'
                             src='../galerie/p".$photo->getId().".png'
-                            onclick='delete(\"".$photo->getId()."\")'
+                            onclick='select(\"".$photo->getId()."\")'
                             class='galery_image'
                             >
                             </div>

@@ -45,16 +45,15 @@
                         Likes: ".$photo->getLikes()."</br>
                         <img 
                         src='../galerie/p".$photo->getId().".png'
-                        onclick='select(\"".$photo->get()."\")'
+                        onclick='delete(\"".$photo->getId()."\")'
+                        onload='print_comment(\"".$photo->getId()."\")'
                         class='galery_image'
                         >
+                        <div id='my_pict_comment_".$photo->getId()."' class='comment_ma_galerie'></div>
                         </div>
-                        <script src='../scripts/select.js' type='text/javascript'>
-                            print_comment(\"".$photo->get()."\");
-                        </script>
+
                         ";
                     }
-                    //_____________________________ici print comment doesnt works________________
                     for($j = 1; $j <= $nbPages; ++$j)
                     {
                         echo'
@@ -78,6 +77,7 @@
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
         <script src="../scripts/upload.js" type="text/javascript"></script>
+        <script src="../scripts/print_comment.js" type="text/javascript"></script>
 
         </script>
     </body>
