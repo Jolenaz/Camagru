@@ -77,7 +77,7 @@
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
         <script src="../scripts/upload.js" type="text/javascript"></script>
-        <script src="../scripts/select.js" type="text/javascript"></script>
+        <script src="../scripts/galerieManager.js" type="text/javascript"></script>
         <script>
 		function ConnectionNeeded() {
 			alert("Connection requise pour cette section");

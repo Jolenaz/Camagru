@@ -79,7 +79,7 @@
 		<script src="../scripts/webcam.js" type="text/javascript"></script>
         <script src="../scripts/add_sprite.js" type="text/javascript"></script>
         <script src="../scripts/upload.js" type="text/javascript"></script>
-        <script src="../scripts/print_comment.js" type="text/javascript"></script>
+        <script src="../scripts/myGalerieManager.js" type="text/javascript"></script>
 
         </script>
     </body>

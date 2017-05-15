@@ -43,5 +43,43 @@ function append_comment(data) {
         forum.appendChild(com);
 
     }
+    var com = document.createElement('div');
+    com.id = "Comment_field";
 
+    var com_sub = document.createElement('button');
+
+    var com_text = document.createElement('input');
+    com_text.type = "text";
+    com_text.id = "com_text";
+
+    com_sub.onclick = function() { add_comment(comments.photoId) };
+    com_sub.appendChild(document.createTextNode("Comment"));
+
+    com.appendChild(com_text);
+    com.appendChild(com_sub);
+
+    forum.appendChild(com);
+}
+
+function add_comment(photoId) {
+    com_text = document.getElementById("com_text");
+
+    if (com_text.value != '') {
+        var data = {
+            'id': photoId,
+            'text': com_text.value
+        }
+        if (confirm("Do you Valid your comment?")) {
+            request("http://localhost:8080/Camagru/server/add_comment.php", data, "POST", restart_page);
+        }
+    }
+    console.log(com_text.value);
+    var data = {
+        'id': photoId
+    }
+
+}
+
+function restart_page(data) {
+    location.reload();
 }
