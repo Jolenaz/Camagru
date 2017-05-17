@@ -1,3 +1,27 @@
 header {
-    border: solid red 1px;
+    position: relative;
+    background: #4e85e7;
+    border-radius: 9px;
+    box-shadow: 2px 2px 2px black;
+}
+
+#site_info {
+    font-size: 100px;
+    position: relative;
+    left: calc(50% - 200px);
+    top: 20px;
+}
+
+.nav_button {
+    font-size: 30px;
+    background: white;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 5px 5px 5px #1b2e50;
+}
+
+#nav_remote {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
 }

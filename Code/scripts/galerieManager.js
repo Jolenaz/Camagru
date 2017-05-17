@@ -59,6 +59,7 @@ function append_comment(data) {
     com.appendChild(com_sub);
 
     forum.appendChild(com);
+
 }
 
 function add_comment(photoId) {
@@ -73,13 +74,11 @@ function add_comment(photoId) {
             request("http://localhost:8080/Camagru/server/add_comment.php", data, "POST", restart_page);
         }
     }
-    console.log(com_text.value);
-    var data = {
-        'id': photoId
-    }
-
 }
 
 function restart_page(data) {
-    location.reload();
+    if (data == "ERROR Connection") {
+        alert("Connection requise pour pouvoir commenter");
+    } else
+        location.reload();
 }

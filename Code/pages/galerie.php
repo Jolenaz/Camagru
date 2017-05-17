@@ -30,6 +30,16 @@
 
             </aside>
             <article>
+            <?php
+            if ($_SESSION['log'] == false)
+            {
+                echo "
+                <div class='indication'>
+                Vous devez etre connnecter pour pouvoir liker une photo.
+                </div>
+                ";
+            }
+            ?>
                 <div id ="galerie_list">
                     <?php
                         for($i = 3 * ($page - 1); $i < 3 * $page; ++$i)
@@ -42,6 +52,15 @@
                             Nom: ".$photo->getName()."</br>
                             UserName: ".$photo->getUserName()."</br>
                             Likes: ".$photo->getLikes()."</br>
+                            ";
+                            if ($_SESSION['log'] == true)
+                            {
+                                if($photo->is_liked_by($_SESSION['id']) === false)
+                                    echo "like</br>";
+                                else
+                                    echo "Unlike</br>";
+                            }
+                            echo"
                             <img 
                             id = 'photo".$photo->getId()."'
                             src='../galerie/p".$photo->getId().".png'

@@ -58,5 +58,5 @@ function send(name) {
 }
 
 function read_resp(data) {
-    console.log(data);
+    location.reload();
 }

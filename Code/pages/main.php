@@ -34,7 +34,7 @@
             </nav>
         </main>
         <footer>
-            footer
+            Property of jbelless. Powerd by PHP
         </footer>
 		<script>
 		function ConnectionNeeded() {

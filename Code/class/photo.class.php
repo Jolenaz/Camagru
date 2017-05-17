@@ -67,4 +67,9 @@ class photo
         $this->_userName = $name;
     }
 
+    public function is_liked_by($userId)
+    {
+        return(array_search($userId,$this->_likes));
+    }
+
 }
