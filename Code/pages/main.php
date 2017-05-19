@@ -27,7 +27,7 @@
             <article>
                 <div>
                     <h1>Bonjour</h1>
-                    <p> Bienvenue dans Camagru, le Perikura de 42.</p>
+                    <p> Bienvenue dans Camagru, le Perikura de 42</p>
                 </div>
             </article>
             <nav>
