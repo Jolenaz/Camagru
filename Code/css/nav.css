@@ -1,0 +1,11 @@
+nav {
+    margin: 10px;
+    width: 200px;
+    border: solid greenyellow 1px;
+    background: #aca6db;
+}
+
+nav .nav_button {
+    margin: 25px;
+    padding: 5px;
+}

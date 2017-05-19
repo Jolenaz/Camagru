@@ -24,11 +24,24 @@ $result = $sth->fetch(PDO::FETCH_ASSOC);
 if ($result == null)
 {
     print '
-        Mot de passe est incorrect
-        <div>
-            <form action="../pages/modify_email.php" method ="post"><input type="submit" value="Essayer encore "></form>
+    <head>
+    	<meta charset="utf-8">
+	<title>Mon compte</title>
+    <link rel="stylesheet" href="../css/body.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    </head>
+    <body>
+        <h1 style="texte-align:center;">Mot de passe incorrect</h1>
+            
+        <div class="navigation_box">
+
+        <form class="navigation_box_component"action="../pages/modify_email.php" method ="post">
+            <input class="nav_button" type="submit" value="Essayer encore ">
+        </form>
         </div>
-        ';
+        
+    </body>';
         die();
 }
 else
@@ -40,7 +53,6 @@ else
 	$sth->bindParam(1, $mail, PDO::PARAM_STR);
 	$sth->bindParam(2, $login, PDO::PARAM_STR);
 	$sth->execute();
-	$result = $sth->fetch(PDO::FETCH_ASSOC);
 }
 
 $sth = null;

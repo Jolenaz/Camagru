@@ -16,22 +16,41 @@ $pass2 = filter_input(INPUT_POST, passwd2, FILTER_SANITIZE_STRING);
 if ($pass != $pass2)
 {
       print '
-        le Mot de passe et la confirmation de correspondent pas
+        <head>
+            <meta charset="utf-8">
+            <title>Mon compte</title>
+            <link rel="stylesheet" href="../css/body.css">
+            <link rel="stylesheet" href="../css/header.css">
+            <link rel="stylesheet" href="../css/navigation.css">
+            </head>
+        <body>
         <div>
-            <form action="../pages/create_account.php" method ="post"><input type="submit" value="Essayer encore "></form>
-        </div>
-        ';
+            <h1 style="texte-align:center;">le Mot de passe et la confirmation de correspondent pas</h1>
+            <div class="navigation_box">
+                <form class="navigation_box_component"action="../pages/create_account.php" method ="post"><input class="nav_button" type="submit" value="Essayer encore "></form>
+            <div>
+        </body> 
+            ';
         die();  
 }
 if (!check_pass($pass))
 {
       print '
-        le mot de passe doit contenir au moins un chiffre et une lettre </br>
-		le mot de passe doit avoir au moins 8 caracteres
-        <div>
-            <form action="../pages/create_account.php" method ="post"><input type="submit" value="Essayer encore "></form>
-        </div>
-        ';
+        <head>
+            <meta charset="utf-8">
+            <title>Mon compte</title>
+            <link rel="stylesheet" href="../css/body.css">
+            <link rel="stylesheet" href="../css/header.css">
+            <link rel="stylesheet" href="../css/navigation.css">
+        </head>
+        <h1 style="texte-align:center;">
+            le mot de passe doit contenir au moins un chiffre et une lettre </br>
+            le mot de passe doit avoir au moins 8 caracteres
+            </h1>
+            <div class="navigation_box">
+                <form class="navigation_box_component" action="../pages/create_account.php" method ="post"><input class="nav_button"type="submit" value="Essayer encore "></form>
+            </div>
+            ';
         die();
 }
 
@@ -46,9 +65,16 @@ $result = $sth->fetch(PDO::FETCH_ASSOC);
 if ($result != null)
 {
     print '
-        User name allrady exist!
-        <div>
-            <form action="../pages/connection.php" method ="post"><input type="submit" value="Annuler"></form>
+        <head>
+            <meta charset="utf-8">
+            <title>Mon compte</title>
+            <link rel="stylesheet" href="../css/body.css">
+            <link rel="stylesheet" href="../css/header.css">
+            <link rel="stylesheet" href="../css/navigation.css">
+        </head>
+        <h1 style="texte-align:center;">User name allrady exist!</h1>
+        <div class="navigation_box">
+            <form class="navigation_box_component" action="../pages/connection.php" method ="post"><input class="nav_button" type="submit" value="Annuler"></form>
         </div>
         ';
         die();

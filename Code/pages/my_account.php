@@ -8,21 +8,25 @@
 <head>
 	<meta charset="utf-8">
 	<title>Mon compte</title>
-	<link rel="stylesheet" href="../../css/create_account.css">
+    <?php
+        include('../css/css.php');
+    ?>
 </head>
 	<body>
 		<h1 style="texte-align:center;">Gestion de votre compte</h1>
+		<div class="navigation_box">
         <div>
-            <form action="modify_pass.php" method ="post">Modifier votre mot de passe<input type="submit" value="Go"></form>
+            <form class="navigation_box_component"action="modify_pass.php" method ="post"><input class="nav_button" type="submit" value="Modifier votre mot de passe"></form>
         </div>
 		<div>
-            <form action="modify_email.php" method ="post">Modifier votre email<input type="submit" value="Go"></form>
+            <form class="navigation_box_component"action="modify_email.php" method ="post"><input class="nav_button" type="submit" value="Modifier votre email"></form>
         </div>
 		<div>
-            <form action="delete_acount.php" method ="post">supprimer votre compte<input type="submit" value="Go"></form>
+            <form class="navigation_box_component"action="delete_acount.php" method ="post"><input class="nav_button" type="submit" value="Supprimer votre compte"></form>
         </div>
 		<div>
-            <form action="main.php" method ="post">Retour accueil<input type="submit" value="Go"></form>
+            <form class="navigation_box_component"action="main.php" method ="post"><input class="nav_button" type="submit" value="Retour accueil"></form>
         </div>
+		</div>
 	</body>
 </html>

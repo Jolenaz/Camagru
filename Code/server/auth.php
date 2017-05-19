@@ -24,14 +24,27 @@ $result = $sth->fetch(PDO::FETCH_ASSOC);
 if ($result == null)
 {
     print '
-        La combinaision Identifiant / Mot de passe est incorrect
-        <div>
-            <form action="../pages/connection.php" method ="post"><input type="submit" value="Essayer encore "></form>
+    <head>
+    	<meta charset="utf-8">
+	<title>Mon compte</title>
+    <link rel="stylesheet" href="../css/body.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    </head>
+    <body>
+        <h1 style="texte-align:center;">La combinaision Identifiant / Mot de passe est incorrect</h1>
+            
+        <div class="navigation_box">
+
+        <form class="navigation_box_component"action="../pages/connection.php" method ="post">
+            <input class="nav_button" type="submit" value="Essayer encore ">
+        </form>
+        <form class="navigation_box_component"action="../pages/lostMail.php">
+            <input class="nav_button"type="submit" value="Mots de passe oublié">
+        </form>
         </div>
-        <form action="../pages/lostMail.php">
-				<input type="submit" value="Mots de passe oublié" />
-		</form>
-        ';
+        
+    </body>';
         die();
 }
 else

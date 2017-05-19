@@ -1,0 +1,27 @@
+.navigation_box {
+    background: #4e85e7;
+    position: absolute;
+    width: 500px;
+    left: calc(50% - 250px);
+    bottom: calc(50% + 50px);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px #1b2e50;
+}
+
+.navigation_box_component {
+    margin: 5px;
+    font-size: 40px;
+}
+
+.navigation_box_text {
+    width: 100%;
+    position: relative;
+    top: -5px;
+    left: 5px;
+    font-size: 20px;
+}
+
+.navigation_box_component .nav_button {
+    width: 400px;
+}
