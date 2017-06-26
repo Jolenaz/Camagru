@@ -44,7 +44,8 @@
                             break;
                         $quos = calc_quos($img, 100);
                         echo"
-                            <img 
+                            <img
+                            class=pict_montage
                             id=sp" . $sprite->getID() . "
                             src='../sprites/sp" . $sprite->getID() . ".".$sprite->getFormat()."' 
                             style='width:".imagesx($img) * $quos."px;height:".imagesy($img) * $quos."px;'
@@ -55,7 +56,7 @@
                     }   
                 ?>
                 <div class = "sprite_upload">
-                    Telecharger une nouvelle icone.
+                    Telecharger une nouvelle icone:
                     <form action="../server/upload_sprite.php" method="post" enctype="multipart/form-data">
                         Fichier: <input type="file" name="fileToUpload" id="fileToUpload"><br>
                         Nom: <input type="text" id="name"><br>
@@ -68,7 +69,6 @@
             </aside>
             <article >
                 <div>
-                    article </br>
                     Vous etes dans la partie montage.
                 </div>
                 <div id="zone_montage">
@@ -107,7 +107,6 @@
             </nav>
         </main>
         <footer id="footer">
-        footer
                 <div id="prev_zone">
                     <canvas id="prev0" width="640" height="480" ></canvas>
                     <canvas id="prev1" width="640" height="480" ></canvas>

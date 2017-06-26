@@ -1,11 +1,24 @@
 nav {
     margin: 10px;
     width: 200px;
-    border: solid greenyellow 1px;
     background: #aca6db;
 }
 
 nav .nav_button {
     margin: 25px;
+    padding: 5px;
+}
+
+.pict_montage {
+    position: relative;
+    left: 25px;
+    border: solid black 1px;
+    margin: 5px;
+    padding: 5px;
+}
+
+.sprite_upload {
+    border: solid black 1px;
+    margin: 5px;
     padding: 5px;
 }
