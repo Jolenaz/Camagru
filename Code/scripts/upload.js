@@ -14,13 +14,13 @@ function take_picture() {
     var img1 = new Image();
     img1.src = data_img1;
 
-    console.log(vid);
+    console.log(img1);
 
     var ctx0 = document.getElementById("prev0").getContext("2d");
     ctx0.drawImage(vid, 0, 0, s1, s2);
 
-    var ctx1 = document.getElementById("prev1").getContext("2d");
-    ctx1.drawImage(img1, 0, 0);
+    var ctx1 = document.getElementById("prev1").appendChild(img1);
+    //ctx1.drawImage(img1, 0, 0);
 
     if (!document.getElementById('send_photo')) {
         var but = document.createElement('button');
