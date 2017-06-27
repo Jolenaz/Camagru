@@ -14,6 +14,8 @@ function take_picture() {
     var img1 = new Image();
     img1.src = data_img1;
 
+    console.log(vid);
+
     var ctx0 = document.getElementById("prev0").getContext("2d");
     ctx0.drawImage(vid, 0, 0, s1, s2);
 
