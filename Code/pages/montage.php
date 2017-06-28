@@ -110,6 +110,7 @@
                 <div id="prev_zone">
                     <canvas id="prev0" width="640" height="480" ></canvas>
                     <canvas id="prev1" width="640" height="480" ></canvas>
+                    <div id="tst_canvas"></div>
                 </div>
         </footer>
         <script src="../scripts/httpRequestManager.js" type="text/javascript"></script>
