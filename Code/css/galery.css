@@ -1,0 +1,21 @@
+#selected_pict {
+    display: block;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    border: solide black 1px;
+    background-color: #3475b5;
+    padding: 5px;
+    margin: 5px;
+}
+
+.comment_writer {
+    text-decoration: underline;
+}
+
+.comment_ma_galerie {
+    border: solide black 1px;
+    background-color: #3475b5;
+    padding: 5px;
+    margin: 5px;
+}

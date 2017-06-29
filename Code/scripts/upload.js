@@ -10,18 +10,13 @@ function take_picture() {
         s2 = vid.style.height.replace("px", "");
     }
 
-    var data_img1 = can1.toDataURL();
-    var img1 = new Image();
-    img1.src = data_img1;
-
-    // var ctx0 = document.getElementById("prev0").getContext("2d");
-    // ctx0.drawImage(vid, 0, 0, s1, s2);
-
-    var tst_div = document.getElementById("tst_canvas");
-    tst_div.appendChild(img1);
+    var ctx0 = document.getElementById("prev0").getContext("2d");
+    ctx0.clearRect(0, 0, 640, 480);
+    ctx0.drawImage(vid, 0, 0, s1, s2);
 
     var ctx1 = document.getElementById("prev1").getContext("2d");
-    ctx1.drawImage(img1, 0, 0);
+    ctx1.clearRect(0, 0, 640, 480);
+    ctx1.drawImage(can1, 0, 0);
 
     if (!document.getElementById('send_photo')) {
         var but = document.createElement('button');

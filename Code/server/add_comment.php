@@ -25,6 +25,34 @@ $sth->bindParam(3, $_SESSION['id'], PDO::PARAM_STR);
 $sth->execute();
 
 $sth = null;
+
+$sth = $dbh->prepare("SELECT * FROM  `Photos` WHERE `id` = ?;");
+$sth->bindParam(1, $photoId, PDO::PARAM_STR);
+$sth->execute();
+$ownerId = $sth->fetch(PDO::FETCH_ASSOC); 
+$photoName = $ownerId[name];
+$ownerId = $ownerId[userId];
+
+$sth = null;
+$sth = $dbh->prepare("SELECT `mail` FROM  `Users` WHERE `id` = ?;");
+$sth->bindParam(1, $ownerId, PDO::PARAM_STR);
+$sth->execute();
+$mail = $sth->fetch(PDO::FETCH_ASSOC); 
+
+$mail = $mail[mail];
+
+mail(
+    $mail,
+    "You have new comment",
+    "
+		Your Picture ".$photoName . " receive a new comment :
+        ". $text ."
+    "
+    
+);
+
+
+$sth = null;
 $dbh = null;
 
 ?>

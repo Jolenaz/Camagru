@@ -6,6 +6,12 @@ var is_recording = false;
 
 function getVideo() {
 
+    var old = document.getElementById('image_fond');
+
+    if (old) {
+        old.parentNode.removeChild(old);
+    }
+
     is_recording = !is_recording;
     if (navigator.getUserMedia) {
         navigator.getUserMedia({ audio: false, video: { width: 520, height: 520 } },

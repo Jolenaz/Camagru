@@ -3,6 +3,10 @@ main {
     border: solid blue 1px;
 }
 
+article {
+    position: relative;
+}
+
 aside {
     border: solid brown 1px;
     width: 150px;

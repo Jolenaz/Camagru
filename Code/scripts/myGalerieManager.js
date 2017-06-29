@@ -46,11 +46,6 @@ function add_comment(photoId) {
             request("http://localhost:8080/Camagru/server/add_comment.php", data, "POST", restart_page);
         }
     }
-    console.log(com_text.value);
-    var data = {
-        'id': photoId
-    }
-
 }
 
 function sup_image(photoId) {
@@ -62,7 +57,11 @@ function sup_image(photoId) {
 }
 
 function restart_page(data) {
-    location.reload();
+
+    if (data)
+        console.log(data);
+    else
+        location.reload();
 }
 
 function add_sup_button(photoId) {
