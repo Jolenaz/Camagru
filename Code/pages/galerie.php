@@ -56,9 +56,17 @@
                             if ($_SESSION['log'] == true)
                             {
                                 if($photo->is_liked_by($_SESSION['id']) === false)
-                                    echo "like</br>";
+                                    echo '
+                                    <form method="POST" atcion="../server/like.php">
+                                        <input type="submit" name="like" value="Liker"
+                                    </form>
+                                    ';
                                 else
-                                    echo "Unlike</br>";
+                                    echo '
+                                    <form method="POST" atcion="../server/like.php">
+                                        <input type="submit" name="like" value="Unliker"
+                                    </form>
+                                    ';
                             }
                             echo"
                             <img 
