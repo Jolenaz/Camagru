@@ -53,7 +53,6 @@ else
 
 	$sth->bindParam(1, $login, PDO::PARAM_STR);
 	$sth->execute();
-	$result = $sth->fetch(PDO::FETCH_ASSOC);
 }
 
 $_SESSION['log'] = false;

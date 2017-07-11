@@ -94,7 +94,6 @@ $sth->bindParam(2, $mail, PDO::PARAM_STR);
 $sth->bindParam(3, $pass, PDO::PARAM_STR);
 
 $sth->execute();
-$result = $sth->fetch(PDO::FETCH_ASSOC);
 
 mail(
     $mail,

@@ -65,7 +65,7 @@ if (!check_pass($pass))
             le mot de passe doit avoir au moins 8 caracteres
             </h1>
             <div class="navigation_box">
-                <form class="navigation_box_component" action="../pages/modify_pass.php.php" method ="post"><input class="nav_button"type="submit" value="Essayer encore "></form>
+                <form class="navigation_box_component" action="../pages/modify_pass.php" method ="post"><input class="nav_button"type="submit" value="Essayer encore "></form>
             </div>
             ';
         die();
@@ -85,7 +85,7 @@ if ($pass != $pass2)
         <div>
             <h1 style="texte-align:center;">le Mot de passe et la confirmation de correspondent pas</h1>
             <div class="navigation_box">
-                <form class="navigation_box_component"action="../pages/modify_pass.php.php" method ="post"><input class="nav_button" type="submit" value="Essayer encore "></form>
+                <form class="navigation_box_component"action="../pages/modify_pass.php" method ="post"><input class="nav_button" type="submit" value="Essayer encore "></form>
             <div>
         </body> 
             ';
